@@ -1,0 +1,10 @@
+{
+    "phase": "Phase 4C",
+    "title": "Image Quality and Failure Subgroup Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "n_patients": 50,
+    "model_training": false,
+    "threshold_tuning": false,
+    "post_hoc_pipeline_modification": false,
+    "next_phase": "Phase 4D \u2014 Representative Failure Case Analysis"
+}

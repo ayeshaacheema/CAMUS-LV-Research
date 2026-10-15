@@ -1,0 +1,38 @@
+{
+  "phase": "5D",
+  "title": "Final System Verification",
+  "status": "completed",
+  "verified_at_utc": "2026-10-09T05:53:18.829951+00:00",
+  "verification_results": {
+    "initial_numerical_consistency": "passed",
+    "validated_application_regression": "passed",
+    "segmentation_overlay_generation": "passed",
+    "ef_band_output": "passed",
+    "non_diagnostic_disclaimer": "passed",
+    "uncalibrated_score_wording": "passed",
+    "missing_input_handling": "passed",
+    "corrupt_input_handling": "passed",
+    "direct_input_validation": "passed",
+    "mocked_invalid_spacing_rejection": "passed"
+  },
+  "test_counts": {
+    "numerical_measurements_verified": 8,
+    "direct_validation_cases": 8,
+    "missing_or_corrupt_input_cases": 4
+  },
+  "spacing_validation": {
+    "positive_finite_spacing_required": true,
+    "validator_unit_tests_passed": true,
+    "application_handler_mock_test_passed": true,
+    "raw_nifti_zero_spacing_test_passed": false,
+    "raw_nifti_test_explanation": "Nibabel normalized zero-valued pixdim to 1 before application validation. The original test therefore did not demonstrate detection of malformed raw spacing metadata.",
+    "known_limitation": "The application validates spacing values returned by the NIfTI loader. It cannot reliably detect missing or invalid spacing that has already been repaired or replaced with defaults by the reader."
+  },
+  "scientific_scope": {
+    "application_type": "Research assistive prototype",
+    "clinical_validation": false,
+    "diagnostic_use": false,
+    "frozen_model_retraining": false,
+    "evaluation_scope": "Previously established CAMUS patient-level evaluation partition; not independent external clinical validation."
+  }
+}

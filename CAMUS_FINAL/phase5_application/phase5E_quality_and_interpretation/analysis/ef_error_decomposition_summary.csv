@@ -1,0 +1,4 @@
+Comparison,Mean absolute difference (pp),Median absolute difference (pp),Maximum absolute difference (pp)
+Reference → GT geometry,6.6675980814827644,5.424838319394013,48.672718476333245
+GT geometry → Predicted geometry,5.8940462895622705,4.683417580783761,18.055404963382696
+Reference → Predicted geometry,8.190605194664975,7.287507245802544,42.794597881921085

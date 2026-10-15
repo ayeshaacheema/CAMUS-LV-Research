@@ -1,0 +1,23 @@
+{
+    "purpose": "Qualitative visualization of predefined Phase 4D cases",
+    "historical_prediction_masks_available": false,
+    "masks_regenerated_for_visualization": true,
+    "frozen_segmentation_model_used": true,
+    "frozen_model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+    "documented_inference_configuration": {
+        "resolution": "256x256",
+        "normalization": "per-image min-max normalization",
+        "resize": "stretch resize",
+        "threshold": 0.5,
+        "postprocessing": [
+            "largest connected component",
+            "binary hole filling"
+        ]
+    },
+    "maximum_absolute_dice_reproduction_difference": 0.008873715032206131,
+    "regenerated_masks_use": "Qualitative visualization only",
+    "quantitative_results_source": "Original frozen Phase 1-4 analysis tables",
+    "regenerated_masks_used_for_new_quantitative_analysis": false,
+    "pipeline_modified": false,
+    "note": "Historical prediction masks were not retained. Selected masks were regenerated from the frozen segmentation model for qualitative visualization. A small discrepancy was observed relative to stored historical Dice values. Therefore, all reported quantitative metrics remain those from the original frozen analysis tables."
+}

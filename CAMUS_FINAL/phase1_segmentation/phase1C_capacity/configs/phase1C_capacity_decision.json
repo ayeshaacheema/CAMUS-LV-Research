@@ -1,0 +1,94 @@
+{
+  "experiment": "Phase 1C \u2014 Controlled Model Capacity Experiment",
+  "status": "COMPLETED",
+  "selected_capacity": "large",
+  "selected_filters": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "selected_parameter_count": 7759521,
+  "fixed_settings": {
+    "resolution": 256,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "batch_size": 2,
+    "augmentation": false,
+    "loss": "BCE + Dice",
+    "epochs": 30,
+    "threshold": 0.5,
+    "seed": 42
+  },
+  "capacities_compared": {
+    "small": {
+      "filters": [
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "parameters": 485673
+    },
+    "medium": {
+      "filters": [
+        16,
+        32,
+        64,
+        128,
+        256
+      ],
+      "parameters": 1940817
+    },
+    "large": {
+      "filters": [
+        32,
+        64,
+        128,
+        256,
+        512
+      ],
+      "parameters": 7759521
+    }
+  },
+  "selected_validation_results": {
+    "overall_dice": 0.9350125220031618,
+    "ED_dice": 0.9442841150608569,
+    "ES_dice": 0.9257409289454666,
+    "overall_iou": 0.8800762614822247,
+    "precision": 0.9394634284481954,
+    "recall": 0.9356020488545052,
+    "normalized_hd95": 0.021656494661775008,
+    "ED_area_MAE_pct": 5.838892413381289,
+    "ES_area_MAE_pct": 9.569601561360683,
+    "overall_area_MAE_pct": 7.704246987370986,
+    "ED_signed_area_error_pct": -0.9072219728464826,
+    "ES_signed_area_error_pct": 1.6548005809138397,
+    "overall_signed_area_error_pct": 0.37378930403367866
+  },
+  "large_vs_medium": {
+    "parameter_multiplier": 3.9980693697551084,
+    "overall_dice_change": 0.004592751288589936,
+    "ED_dice_change": 0.0039059245954701227,
+    "ES_dice_change": 0.005279577981709527,
+    "normalized_hd95_change": -0.0023369474296656145,
+    "overall_area_MAE_change_pct": -1.1410012970268095,
+    "ES_area_MAE_change_pct": -0.9576027707757717
+  },
+  "paired_large_vs_medium": {
+    "mean_dice_change": 0.004592751288589705,
+    "mean_iou_change": 0.006654215383957401,
+    "mean_normalized_hd95_change": -0.0023369474296656167,
+    "mean_area_MAE_change_pct": -1.1410012970268106,
+    "frames_dice_improved": 54,
+    "frames_dice_worsened": 46,
+    "frames_area_error_reduced": 58
+  },
+  "selection_dataset": "Validation set only",
+  "test_set_used": false,
+  "selection_reason": "The Large U-Net was selected because it achieved the strongest validation performance across segmentation overlap, boundary accuracy, and LV area fidelity. Compared with the Medium U-Net, it improved overall, ED, and ES Dice and IoU, reduced normalized HD95, and reduced ED, ES, and overall area MAE. The improvement in ES Dice and ES area error is particularly relevant for the subsequent quantitative LV analysis.",
+  "interpretation_note": "The selected Large architecture contains approximately four times as many parameters as the Medium architecture. Capacity selection is based on validation performance under the fixed Phase 1B training protocol; the test set was not used.",
+  "next_experiment": "Phase 1D \u2014 Controlled Loss Function Experiment"
+}

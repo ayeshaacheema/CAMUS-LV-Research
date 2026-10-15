@@ -1,0 +1,24 @@
+{
+    "phase": "Phase 4B",
+    "title": "Confidence and Uncertainty Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "main_findings": [
+        "Correct predictions showed modestly higher model confidence and confidence margin, and lower entropy, than misclassified predictions. However, the distributions overlapped substantially.",
+        "Median model confidence was 0.7082 for correct predictions and 0.6613 for misclassified predictions. The exploratory comparison yielded p = 0.0687.",
+        "Confidence did not meaningfully track continuous end-to-end EF disagreement. Spearman rho was 0.0400 for maximum confidence, 0.0830 for confidence margin, and -0.0753 for normalized entropy.",
+        "The Intermediate-EF reference class was the most challenging subgroup, with 35.71% accuracy, compared with 81.25% for Lower-EF and 85.00% for Higher-EF.",
+        "Intermediate-EF cases also had lower median confidence and margin and higher median entropy than the Lower and Higher EF groups.",
+        "Confidently incorrect predictions were observed. The most confident misclassification had a maximum class score of 0.8882.",
+        "Therefore, classifier confidence alone is insufficient as a patient-level reliability or safety indicator in the present frozen system."
+    ],
+    "application_implication": "A future assistive interface may display model confidence as supplementary information, but the present results do not justify using a confidence-only cutoff to determine whether an output is safe or reliable. Reliability review should instead consider multiple pipeline signals, such as segmentation/measurement quality, EF disagreement patterns, image quality, and classifier uncertainty.",
+    "limitations": [
+        "Only 50 frozen evaluation patients were analyzed.",
+        "Confidence scores were not calibrated.",
+        "No independent calibration dataset was available in this phase.",
+        "The evaluation set had historical pilot exposure.",
+        "Subgroup analyses contain small sample sizes.",
+        "No operational confidence threshold was validated."
+    ],
+    "pipeline_changes_after_analysis": false
+}

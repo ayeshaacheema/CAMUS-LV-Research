@@ -1,0 +1,14 @@
+{
+    "phase": "Phase 4D",
+    "analysis": "Representative Failure Case Analysis",
+    "selection_performed_before_image_inspection": true,
+    "selection_rules": {
+        "A": "Patient with largest segmentation-induced absolute EF error.",
+        "B": "Misclassified patient with largest frozen classifier confidence score.",
+        "C": "Patient with largest absolute end-to-end reference-to-predicted EF error.",
+        "D": "Misclassified patient with smallest distance from reference EF to the nearest 40% or 50% classification boundary. Ties prioritized by larger end-to-end EF error, then patient ID.",
+        "E": "Correctly classified patient minimizing the sum of ranks for high mean ED/ES Dice, low segmentation-induced EF error, and low end-to-end EF error."
+    },
+    "duplicate_policy": "If multiple criteria select the same patient, the duplicate is retained and not manually replaced.",
+    "visual_cherry_picking": false
+}

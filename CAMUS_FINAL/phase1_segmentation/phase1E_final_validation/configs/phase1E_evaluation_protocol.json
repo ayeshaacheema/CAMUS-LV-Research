@@ -1,0 +1,56 @@
+{
+  "experiment": "Phase 1E \u2014 Final Segmentation Validation",
+  "purpose": "Single locked evaluation of the final Phase 1 segmentation configuration before freezing the model for Phase 2 quantitative LV analysis.",
+  "model_selection_complete": true,
+  "retraining_in_phase1e": false,
+  "hyperparameter_tuning_in_phase1e": false,
+  "selected_configuration": {
+    "resolution": 256,
+    "architecture": "Large U-Net",
+    "filters": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "parameters": 7759521,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "batch_size": 2,
+    "augmentation": false,
+    "loss": "BCE + Dice",
+    "threshold": 0.5,
+    "seed": 42
+  },
+  "checkpoint": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1D_loss/models/bce_dice_best.keras",
+  "evaluation_partition": "50-patient test partition",
+  "number_test_patients": 50,
+  "number_test_frames": 100,
+  "phases": [
+    "ED",
+    "ES"
+  ],
+  "postprocessing": [
+    "threshold at 0.50",
+    "largest connected component",
+    "binary hole filling"
+  ],
+  "primary_metrics": [
+    "Dice",
+    "IoU",
+    "ED Dice",
+    "ES Dice",
+    "normalized HD95",
+    "ED area MAE %",
+    "ES area MAE %",
+    "overall area MAE %"
+  ],
+  "secondary_metrics": [
+    "precision",
+    "recall",
+    "signed area error %"
+  ],
+  "decision_rule": "The test results are descriptive final evaluation results only. They will not be used to alter the selected architecture, training hyperparameters, loss, threshold, or postprocessing.",
+  "historical_test_exposure_note": "This partition was inspected during earlier pilot development before the clean Phase 1 rebuild. It was not used for model selection during clean Phases 1A\u20131D; therefore this evaluation is treated as the locked final evaluation of the clean pipeline, but not claimed to be a pristine never-inspected independent test set."
+}

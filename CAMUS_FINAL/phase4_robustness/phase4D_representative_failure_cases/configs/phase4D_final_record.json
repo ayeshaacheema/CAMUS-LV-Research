@@ -1,0 +1,55 @@
+{
+    "phase": "Phase 4D",
+    "title": "Representative Success and Failure Case Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "purpose": "Illustrate quantitatively predefined representative success and failure patterns of the frozen end-to-end pipeline at the patient level.",
+    "analysis_type": "Descriptive representative-case analysis",
+    "pipeline_modified": false,
+    "case_selection": {
+        "selection_defined_before_visual_inspection": true,
+        "visual_cherry_picking": false,
+        "number_of_selection_criteria": 5,
+        "number_of_unique_patients": 4,
+        "duplicate_selection_retained": true
+    },
+    "selected_cases": {
+        "A_B": {
+            "patient_id": "patient0358",
+            "role": "Largest segmentation-induced EF error and most confident misclassification"
+        },
+        "C": {
+            "patient_id": "patient0217",
+            "role": "Largest end-to-end EF disagreement"
+        },
+        "D": {
+            "patient_id": "patient0288",
+            "role": "Misclassification nearest EF-band boundary"
+        },
+        "E": {
+            "patient_id": "patient0230",
+            "role": "Representative successful pipeline case"
+        }
+    },
+    "visualization_provenance": {
+        "historical_prediction_masks_retained": false,
+        "masks_regenerated_from_frozen_model": true,
+        "regenerated_masks_used_for": "Qualitative visualization only",
+        "maximum_absolute_dice_reproduction_difference": 0.008873715032206131,
+        "quantitative_results_source": "Original frozen Phase 1-4 analysis tables",
+        "new_quantitative_metrics_from_regenerated_masks": false
+    },
+    "main_findings": [
+        "A large segmentation-associated EF propagation error can coincide with an incorrect EF-band prediction even when classifier confidence is high.",
+        "Large end-to-end EF disagreement may arise substantially from disagreement between reference EF and the selected 2D geometry-based measurement method rather than from segmentation alone.",
+        "Small continuous EF differences can alter categorical EF-band assignment when the reference lies near a predefined class boundary.",
+        "A representative successful case showed that strong segmentation, small quantitative disagreement, and correct classification can align within the frozen pipeline."
+    ],
+    "limitations": [
+        "Representative cases are illustrative and do not estimate the prevalence of each failure mechanism.",
+        "Historical prediction masks were not retained; regenerated masks are therefore restricted to qualitative visualization.",
+        "A small discrepancy remained between regenerated masks and stored historical Dice metrics.",
+        "The exact implementation-level source of the small reproduction discrepancy was not recoverable from the retained experiment records.",
+        "Observed upstream-downstream error associations should not be interpreted as proof of causality.",
+        "Classifier confidence scores are uncalibrated and should not be interpreted as calibrated probabilities or patient-level reliability guarantees."
+    ]
+}

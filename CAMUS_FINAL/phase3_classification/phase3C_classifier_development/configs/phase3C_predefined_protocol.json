@@ -1,0 +1,67 @@
+{
+  "phase": "Phase 3C \u2014 Learned Classifier Development",
+  "purpose": "Develop a lightweight classifier using frozen quantitative LV measurements to predict the frozen Phase 3A EF-based functional categories.",
+  "classification_target": "Phase 3A frozen 3-class reference-EF target",
+  "classes": [
+    "Lower_EF",
+    "Intermediate_EF",
+    "Higher_EF"
+  ],
+  "class_definition": {
+    "Lower_EF": "reference EF <= 40%",
+    "Intermediate_EF": "40% < reference EF < 50%",
+    "Higher_EF": "reference EF >= 50%"
+  },
+  "development_partitions": {
+    "training": 400,
+    "validation": 50,
+    "test_used_during_phase3C": 0
+  },
+  "primary_selection_metric": "validation macro F1",
+  "secondary_metrics": [
+    "accuracy",
+    "balanced accuracy",
+    "weighted F1",
+    "Cohen kappa",
+    "per-class precision",
+    "per-class recall",
+    "per-class F1"
+  ],
+  "feature_sets": {
+    "F1_EF_only": [
+      "PRED_EF_pct"
+    ],
+    "F2_volumetric": [
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ],
+    "F3_full_quantitative": [
+      "PRED_ED_area_mm2",
+      "PRED_ES_area_mm2",
+      "PRED_ED_length_mm",
+      "PRED_ES_length_mm",
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ]
+  },
+  "classifier": "StandardScaler + multinomial-capable LogisticRegression",
+  "classifier_settings": {
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "random_state": 42
+  },
+  "resampling": "none",
+  "SMOTE": false,
+  "class_weights_predefined": null,
+  "feature_scaling": "StandardScaler fitted on training data only within sklearn Pipeline.",
+  "segmentation_model_frozen": true,
+  "quantitative_pipeline_frozen": true,
+  "phase2_geometry_method": "PCA major-axis + single-plane area-length",
+  "test_data_allowed_for_model_selection": false,
+  "selection_rule": "Select the feature set/classifier configuration with the highest validation macro F1. The final test partition is reserved for Phase 3D.",
+  "clinical_framing": "EF-based functional classification for an assistive, non-diagnostic application."
+}

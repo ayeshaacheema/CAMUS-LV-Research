@@ -1,0 +1,4 @@
+split,EF_<50,EF_>=50,Total
+train,268,132,400
+validation,30,20,50
+test,30,20,50

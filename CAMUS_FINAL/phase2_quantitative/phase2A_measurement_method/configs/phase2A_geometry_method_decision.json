@@ -1,0 +1,32 @@
+{
+  "status": "FROZEN",
+  "selection_partition": "validation",
+  "selection_n_patients": 50,
+  "selected_long_axis_method": "PCA_major_axis",
+  "alternative_method": "maximum_feret",
+  "selected_volume_method": "single-plane area-length",
+  "volume_equation": "V = (8 / (3*pi)) * (A^2 / L)",
+  "selection_reference": "CAMUS Info_4CH.cfg EF",
+  "validation_results": {
+    "PCA": {
+      "EF_MAE_pp": 8.1604,
+      "EF_RMSE_pp": 9.4344,
+      "EF_bias_pp": 5.8053,
+      "EF_correlation": 0.8475,
+      "patients_lower_absolute_error": 31
+    },
+    "Maximum_Feret": {
+      "EF_MAE_pp": 8.2922,
+      "EF_RMSE_pp": 9.5364,
+      "EF_bias_pp": 6.0454,
+      "EF_correlation": 0.8512,
+      "patients_lower_absolute_error": 19
+    }
+  },
+  "mean_pca_minus_feret_absolute_EF_error_pp": -0.1318,
+  "decision": "PCA major-axis length selected because it produced slightly lower validation EF MAE, RMSE and bias, and lower patient-level absolute EF error in 31 of 50 validation patients.",
+  "interpretation_limitation": "The difference between PCA and Maximum Feret was small. Selection applies only to the two tested long-axis definitions under this single-plane A4C area-length measurement protocol.",
+  "important_observation": "Even with ground-truth masks, PCA-derived single-plane EF showed positive disagreement relative to CAMUS reference EF. Therefore downstream EF disagreement cannot be attributed solely to segmentation error.",
+  "test_data_used_for_method_selection": false,
+  "method_changes_after_test_evaluation_allowed": false
+}

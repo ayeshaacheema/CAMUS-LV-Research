@@ -1,0 +1,33 @@
+{
+    "phase": "Phase 4A",
+    "title": "End-to-End Error Propagation Analysis",
+    "analysis_type": "Descriptive/exploratory analysis of frozen evaluation outputs",
+    "n_patients": 50,
+    "classification": {
+        "correct": 35,
+        "incorrect": 15
+    },
+    "mean_absolute_EF_errors_pp": {
+        "geometry_reference": 6.6675980814827644,
+        "segmentation_induced": 5.8940462895622705,
+        "end_to_end": 8.190605194664975
+    },
+    "key_correlations": {
+        "ED_area_error_to_EDV_error": 0.7228331332533012,
+        "ES_area_error_to_ESV_error": 0.8579591836734692
+    },
+    "classification_group_medians": {
+        "segmentation_induced_EF_error_correct": 3.234686799847985,
+        "segmentation_induced_EF_error_incorrect": 8.917778769938685,
+        "end_to_end_EF_error_correct": 6.826023377245505,
+        "end_to_end_EF_error_incorrect": 11.457053891296027
+    },
+    "protocol_notes": [
+        "No model training or retraining performed.",
+        "No segmentation, geometry, EF, or classification thresholds modified.",
+        "All analyses use the frozen 50-patient evaluation outputs.",
+        "Associations are exploratory and do not establish causation.",
+        "Multiple exploratory statistical comparisons were performed; individual p-values are not treated as confirmatory evidence.",
+        "Absolute EF error components are not assumed to be additive."
+    ]
+}

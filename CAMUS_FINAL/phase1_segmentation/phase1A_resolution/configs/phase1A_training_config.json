@@ -1,0 +1,33 @@
+{
+  "architecture": "Baseline_UNet",
+  "filters": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "parameter_count": 1940817,
+  "resolutions": [
+    128,
+    256,
+    512
+  ],
+  "optimizer": "Adam",
+  "initial_learning_rate": 0.0001,
+  "loss": "BCE + Dice",
+  "batch_size": 4,
+  "epochs": 30,
+  "augmentation": false,
+  "threshold": 0.5,
+  "checkpoint_monitor": "val_dice_coefficient",
+  "checkpoint_mode": "max",
+  "early_stopping": false,
+  "reduce_lr_on_plateau": false,
+  "seed": 42,
+  "train_patients": 400,
+  "validation_patients": 50,
+  "train_frames": 800,
+  "validation_frames": 100,
+  "test_used_for_selection": false
+}

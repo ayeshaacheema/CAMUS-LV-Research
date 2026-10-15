@@ -1,0 +1,16 @@
+{
+  "phase": "5B",
+  "status": "completed",
+  "verified_at_utc": "2026-10-09T05:20:40.550496+00:00",
+  "evaluation_patients": 50,
+  "evaluation_frames": 100,
+  "matching_frozen_predictions": 50,
+  "maximum_probability_difference": 4.440892098500626e-16,
+  "probability_tolerance": 1e-10,
+  "all_probabilities_reproduced": true,
+  "segmentation_model_retrained": false,
+  "classifier_retrained": false,
+  "verification_type": "Reproduction of historical frozen outputs; not independent clinical validation.",
+  "phase2_reproduction_passed": true,
+  "phase2_maximum_absolute_difference": 4.547473508864641e-13
+}

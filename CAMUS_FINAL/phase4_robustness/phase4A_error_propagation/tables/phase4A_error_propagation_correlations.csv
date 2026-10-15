@@ -1,0 +1,11 @@
+stage,predictor,outcome,spearman_rho,p_value
+Segmentation → Quantification,ED area error (%),EDV error (mL),0.7228331332533012,3.076311583453236e-09
+Segmentation → Quantification,ES area error (%),ESV error (mL),0.8579591836734692,1.7270798705623388e-15
+Segmentation → Quantification,ED Dice,EDV error (mL),-0.6121968787515005,2.308818339955168e-06
+Segmentation → Quantification,ES Dice,ESV error (mL),-0.7063145258103241,1.000728064300857e-08
+Quantification → EF,EDV error (mL),Segmentation-induced EF error (pp),0.11788715486194477,0.41487026891240564
+Quantification → EF,ESV error (mL),Segmentation-induced EF error (pp),0.27481392557022805,0.05342786909364288
+Segmentation → EF,ED area error (%),Segmentation-induced EF error (pp),0.2790396158463385,0.0497189308248601
+Segmentation → EF,ES area error (%),Segmentation-induced EF error (pp),0.21891956782713082,0.12665243925699188
+Segmentation → EF,ED Dice,Segmentation-induced EF error (pp),-0.28941176470588237,0.04149558816030004
+Segmentation → EF,ES Dice,Segmentation-induced EF error (pp),-0.32206482593037217,0.02255498375032757

@@ -1,0 +1,3 @@
+comparison,n,ED_mean_abs_relative_error_pct,ES_mean_abs_relative_error_pct,median_paired_difference_ES_minus_ED_pct,ES_error_greater_patients,ED_error_greater_patients,wilcoxon_statistic,p_value_one_sided
+ES vs ED area absolute relative error,50,6.881699118990543,9.482420906708644,2.324142015384291,35,15,897.0,0.005764843824541899
+ESV vs EDV absolute relative error,50,11.87621656146861,15.478089925515524,2.293755382489092,31,19,868.0,0.012750041589817407

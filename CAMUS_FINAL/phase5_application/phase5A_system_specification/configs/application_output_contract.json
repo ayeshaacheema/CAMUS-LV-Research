@@ -1,0 +1,45 @@
+{
+    "segmentation_outputs": [
+        "ED LV cavity contour/mask",
+        "ES LV cavity contour/mask"
+    ],
+    "quantitative_outputs": {
+        "ED_area_mm2": "Predicted LV cavity area at end-diastole",
+        "ES_area_mm2": "Predicted LV cavity area at end-systole",
+        "ED_length_mm": "PCA-derived LV long-axis length at end-diastole",
+        "ES_length_mm": "PCA-derived LV long-axis length at end-systole",
+        "EDV_ml": "Estimated end-diastolic volume",
+        "ESV_ml": "Estimated end-systolic volume",
+        "SV_ml": "Estimated stroke volume",
+        "EF_pct": "Estimated ejection fraction"
+    },
+    "classification_output": {
+        "type": "EF-band classification",
+        "classes": {
+            "Lower_EF": "EF <= 40%",
+            "Intermediate_EF": "40% < EF < 50%",
+            "Higher_EF": "EF >= 50%"
+        },
+        "clinical_diagnosis": false
+    },
+    "confidence_output": {
+        "name": "Model confidence score",
+        "source": "Maximum output probability from the frozen classifier",
+        "calibrated_probability": false,
+        "allowed_interpretation": "Supporting information about the classifier output.",
+        "prohibited_interpretation": "Must not be presented as a calibrated probability of correctness or as a guarantee that the prediction is reliable."
+    },
+    "mandatory_context": [
+        "A4C ED and ES input frames",
+        "Predicted LV contours",
+        "Assistive/non-diagnostic notice"
+    ],
+    "prohibited_outputs": [
+        "Automated heart-failure diagnosis",
+        "Automated disease diagnosis",
+        "Treatment recommendation",
+        "Patient prognosis",
+        "Claim that classifier confidence guarantees correctness",
+        "Claim that estimated volumes or EF are clinical ground truth"
+    ]
+}

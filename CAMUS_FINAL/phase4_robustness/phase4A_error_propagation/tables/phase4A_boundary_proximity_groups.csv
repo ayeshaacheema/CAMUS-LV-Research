@@ -1,0 +1,4 @@
+boundary_proximity_group,n,misclassified,misclassification_rate_pct
+>2–5 pp,16,5,31.25
+>5 pp,21,4,19.047619047619047
+≤2 pp,13,6,46.15384615384615

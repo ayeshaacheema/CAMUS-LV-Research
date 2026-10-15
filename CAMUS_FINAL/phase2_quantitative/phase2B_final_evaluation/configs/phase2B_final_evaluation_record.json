@@ -1,0 +1,163 @@
+{
+  "phase": "Phase 2B \u2014 Final Quantitative Evaluation",
+  "status": "COMPLETE_AND_FROZEN",
+  "evaluation_partition": {
+    "name": "test",
+    "patients": 50,
+    "frames": 100,
+    "ED_frames": 50,
+    "ES_frames": 50
+  },
+  "test_partition_note": "This partition was excluded from the clean Phase 1A-1D model-selection process and Phase 2A geometry-method selection. However, because it had historical pilot exposure, it is not described as a pristine external test set.",
+  "segmentation_pipeline": {
+    "model": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+    "sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+    "resolution": "256x256",
+    "threshold": 0.5,
+    "postprocessing": "largest connected component + hole filling",
+    "status": "frozen before Phase 2B"
+  },
+  "quantitative_pipeline": {
+    "LV_area": "physical mask area using adjusted NIfTI pixel spacing",
+    "long_axis": "PCA major axis",
+    "volume": "single-plane A4C area-length",
+    "equation": "V = (8/(3*pi)) * A^2/L",
+    "EDV": "ED area-length volume",
+    "ESV": "ES area-length volume",
+    "SV": "EDV - ESV",
+    "EF": "(EDV - ESV) / EDV * 100",
+    "reference_EF": "CAMUS Info_4CH.cfg EF"
+  },
+  "sanity_checks": {
+    "all_passed": true,
+    "failed_checks": 0
+  },
+  "segmentation_to_measurement_error": {
+    "ED_area": {
+      "MAE_mm2": 203.1518,
+      "relative_MAE_pct": 6.8817,
+      "relative_bias_pct": -4.3253,
+      "correlation": 0.9417
+    },
+    "ES_area": {
+      "MAE_mm2": 179.2046,
+      "relative_MAE_pct": 9.4824,
+      "relative_bias_pct": -5.0406,
+      "correlation": 0.9116
+    },
+    "ED_length": {
+      "MAE_mm": 2.7934,
+      "relative_MAE_pct": 3.4233,
+      "correlation": 0.9166
+    },
+    "ES_length": {
+      "MAE_mm": 3.3978,
+      "relative_MAE_pct": 5.1209,
+      "correlation": 0.8589
+    },
+    "EDV": {
+      "MAE_ml": 11.405,
+      "relative_MAE_pct": 11.8762,
+      "bias_ml": -8.2335,
+      "relative_bias_pct": -7.0275,
+      "correlation": 0.9182
+    },
+    "ESV": {
+      "MAE_ml": 7.1756,
+      "relative_MAE_pct": 15.4781,
+      "bias_ml": -4.1211,
+      "relative_bias_pct": -6.1185,
+      "correlation": 0.907
+    },
+    "SV": {
+      "MAE_ml": 7.9325,
+      "RMSE_ml": 10.445,
+      "bias_ml": -4.1124,
+      "correlation": 0.8761
+    },
+    "EF": {
+      "MAE_percentage_points": 5.894,
+      "RMSE_percentage_points": 7.5615,
+      "bias_percentage_points": 0.1038,
+      "correlation": 0.8474
+    }
+  },
+  "EF_error_decomposition": {
+    "reference_to_GT_geometry": {
+      "interpretation": "geometry/reference disagreement",
+      "MAE_pp": 6.6676,
+      "RMSE_pp": 9.6954,
+      "bias_pp": 4.81,
+      "correlation": 0.7994
+    },
+    "GT_geometry_to_predicted_geometry": {
+      "interpretation": "segmentation-induced downstream disagreement",
+      "MAE_pp": 5.894,
+      "RMSE_pp": 7.5615,
+      "bias_pp": 0.1038,
+      "correlation": 0.8474
+    },
+    "reference_to_predicted_geometry": {
+      "interpretation": "total end-to-end disagreement",
+      "MAE_pp": 8.1906,
+      "RMSE_pp": 11.0241,
+      "bias_pp": 4.9139,
+      "correlation": 0.7083
+    }
+  },
+  "bland_altman": {
+    "EDV_GT_vs_PRED": {
+      "bias_ml": -8.2335,
+      "lower_95_LOA_ml": -32.2046,
+      "upper_95_LOA_ml": 15.7376
+    },
+    "ESV_GT_vs_PRED": {
+      "bias_ml": -4.1211,
+      "lower_95_LOA_ml": -21.2672,
+      "upper_95_LOA_ml": 13.0251
+    },
+    "EF_GT_vs_PRED": {
+      "bias_pp": 0.1038,
+      "lower_95_LOA_pp": -14.8657,
+      "upper_95_LOA_pp": 15.0734
+    },
+    "EF_reference_vs_PRED": {
+      "bias_pp": 4.9139,
+      "lower_95_LOA_pp": -14.6246,
+      "upper_95_LOA_pp": 24.4523
+    }
+  },
+  "image_quality_subgroups": {
+    "Good": {
+      "n": 30,
+      "GT_to_PRED_EF_MAE_pp": 5.0287,
+      "Reference_to_PRED_EF_MAE_pp": 7.3117
+    },
+    "Medium": {
+      "n": 13,
+      "GT_to_PRED_EF_MAE_pp": 6.0277,
+      "Reference_to_PRED_EF_MAE_pp": 9.7344
+    },
+    "Poor": {
+      "n": 7,
+      "GT_to_PRED_EF_MAE_pp": 9.3545,
+      "Reference_to_PRED_EF_MAE_pp": 9.0902
+    }
+  },
+  "main_findings": [
+    "ES measurements were less accurate than ED measurements in relative terms.",
+    "Predicted masks systematically underestimated LV area and area-length volumes.",
+    "Despite volume underestimation, GT-to-predicted EF bias was close to zero because ED and ES errors can partially cancel in the EF ratio.",
+    "Ground-truth-mask geometry itself differed substantially from CAMUS reference EF, demonstrating that downstream EF disagreement cannot be attributed solely to segmentation.",
+    "Poor-quality images showed higher segmentation-induced EF error descriptively, but the Poor subgroup contained only seven patients."
+  ],
+  "limitations": [
+    "The area-length calculation is a simplified single-plane A4C geometric estimate.",
+    "GT-mask-derived geometric EF is not equivalent to clinical reference EF.",
+    "The Poor image-quality subgroup is small.",
+    "CAMUS does not provide longitudinal repeated visits, so these results do not validate longitudinal change tracking.",
+    "The evaluation partition had historical pilot exposure and is therefore not claimed as a pristine external test set."
+  ],
+  "post_test_tuning_performed": false,
+  "pipeline_changes_allowed_after_this_record": false
+}

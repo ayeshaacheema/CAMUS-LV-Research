@@ -1,0 +1,61 @@
+{
+    "section_1_case_input": {
+        "title": "A4C Case Input",
+        "display": [
+            "ED frame",
+            "ES frame",
+            "Pixel-spacing / physical-scale information"
+        ]
+    },
+    "section_2_lv_visualization": {
+        "title": "LV Segmentation",
+        "display": [
+            "ED echocardiographic image",
+            "ED predicted LV contour",
+            "ES echocardiographic image",
+            "ES predicted LV contour"
+        ],
+        "purpose": "Allow the user to visually inspect the predicted LV cavity boundaries."
+    },
+    "section_3_quantitative_results": {
+        "title": "Quantitative LV Analysis",
+        "display": [
+            "ED area (mm\u00b2)",
+            "ES area (mm\u00b2)",
+            "ED long-axis length (mm)",
+            "ES long-axis length (mm)",
+            "Estimated EDV (mL)",
+            "Estimated ESV (mL)",
+            "Estimated SV (mL)",
+            "Estimated EF (%)"
+        ]
+    },
+    "section_4_functional_summary": {
+        "title": "EF-Based Functional Summary",
+        "display": [
+            "Estimated EF band",
+            "Model confidence score"
+        ],
+        "class_names": [
+            "Lower_EF",
+            "Intermediate_EF",
+            "Higher_EF"
+        ]
+    },
+    "section_5_interpretation_notice": {
+        "title": "Interpretation Notice",
+        "display": [
+            "Model confidence is an uncalibrated classifier confidence score.",
+            "Confidence should not be interpreted as a probability that the result is correct.",
+            "The output is intended to support review and must not be used as an independent diagnosis."
+        ]
+    },
+    "section_6_system_scope": {
+        "title": "System Scope",
+        "display": [
+            "Validated for the project's A4C ED/ES analysis workflow",
+            "2D single-plane quantitative estimation",
+            "Assistive research prototype"
+        ]
+    }
+}

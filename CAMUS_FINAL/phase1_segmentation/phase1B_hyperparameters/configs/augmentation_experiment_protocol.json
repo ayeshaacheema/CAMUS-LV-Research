@@ -1,0 +1,34 @@
+{
+  "experiment": "Phase 1B-4 \u2014 Controlled Augmentation Experiment",
+  "status": "PROTOCOL FROZEN BEFORE TRAINING",
+  "variable_tested": "training_augmentation",
+  "arms": [
+    "No augmentation",
+    "Conservative augmentation"
+  ],
+  "resolution": 256,
+  "learning_rate": 0.0001,
+  "optimizer": "Adam",
+  "batch_size": 2,
+  "architecture": "Baseline U-Net",
+  "parameters": 1940817,
+  "loss": "BCE + Dice",
+  "epochs": 30,
+  "threshold": 0.5,
+  "seed": 42,
+  "augmentation_policy": {
+    "horizontal_flip_probability": 0.5,
+    "max_rotation_degrees": 10.0,
+    "max_translation_fraction": 0.05,
+    "brightness_delta": 0.1,
+    "contrast_lower": 0.9,
+    "contrast_upper": 1.1
+  },
+  "validation_augmentation": false,
+  "same_initial_weights": true,
+  "same_training_frame_order": true,
+  "train_frames_per_epoch": 800,
+  "validation_frames": 100,
+  "steps_per_epoch": 400,
+  "test_used": false
+}

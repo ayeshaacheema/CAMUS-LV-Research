@@ -1,0 +1,32 @@
+{
+  "experiment_name": "Phase1A_Controlled_Resolution",
+  "research_question": "How does input resolution affect A4C LV cavity segmentation when architecture and training conditions are kept fixed?",
+  "dataset": "CAMUS",
+  "view": "A4C",
+  "target": "LV cavity (CAMUS label 1)",
+  "patients": 500,
+  "split": {
+    "train": 400,
+    "validation": 50,
+    "test": 50,
+    "seed": 42
+  },
+  "resolutions": [
+    128,
+    256,
+    512
+  ],
+  "controlled_variables": [
+    "architecture",
+    "optimizer",
+    "learning_rate",
+    "loss",
+    "batch_size",
+    "augmentation",
+    "patient_split",
+    "random_seed",
+    "training policy"
+  ],
+  "selection_data": "validation only",
+  "test_policy": "Do not use the test set for resolution selection."
+}

@@ -1,0 +1,12 @@
+{
+  "phase": "Phase 2 \u2014 LV Quantitative Analysis",
+  "status": "COMPLETE",
+  "phase2A": "Quantitative measurement methodology developed and selected using validation data.",
+  "phase2B": "Locked final quantitative evaluation completed on 50 patients.",
+  "final_pipeline": "A4C image \u2192 frozen LV segmentation \u2192 physical LV area \u2192 PCA long-axis \u2192 single-plane area-length EDV/ESV \u2192 SV \u2192 EF",
+  "segmentation_model_frozen": true,
+  "quantitative_method_frozen": true,
+  "post_test_tuning": false,
+  "final_record": "/content/drive/MyDrive/CAMUS_FINAL/phase2_quantitative/PHASE2_FINAL_RECORD.json",
+  "next_phase": "Phase 3 \u2014 EF-related classification"
+}

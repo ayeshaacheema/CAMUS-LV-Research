@@ -1,0 +1,28 @@
+﻿# Large trained models
+*.keras
+*.h5
+
+# Generated arrays
+*.npy
+*.npz
+
+# Python temporary files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local application databases and records
+*.sqlite
+**/records/
+
+# Duplicate notebook collections
+**/phase1_Code_Files/
+**/phase2_Quantitative_Analysis_Code_Files/
+**/phase3_Classification_Code_Files/
+**/phase4_Robustness_Code_Files/
+
+
+# Medical scans and demo archives
+*.nii
+*.nii.gz
+*.zip

@@ -1,0 +1,35 @@
+{
+  "experiment": "Phase 1B-1 \u2014 Controlled Learning Rate Experiment",
+  "status": "COMPLETED",
+  "selected_learning_rate": 0.0001,
+  "learning_rates_compared": [
+    0.001,
+    0.0001,
+    1e-05
+  ],
+  "fixed_resolution": 256,
+  "fixed_architecture": "Baseline U-Net",
+  "parameter_count": 1940817,
+  "fixed_optimizer": "Adam",
+  "fixed_batch_size": 4,
+  "fixed_loss": "BCE + Dice",
+  "augmentation": false,
+  "epochs": 30,
+  "threshold": 0.5,
+  "selection_dataset": "Validation set only",
+  "test_set_used": false,
+  "selected_validation_results": {
+    "overall_dice": 0.9294619600935766,
+    "ED_dice": 0.9401146411615795,
+    "ES_dice": 0.9188092790255733,
+    "overall_iou": 0.8705492238465118,
+    "precision": 0.9312058669470976,
+    "recall": 0.9333818935509871,
+    "normalized_hd95": 0.023357898624371515,
+    "ED_area_MAE_pct": 6.429318017944248,
+    "ES_area_MAE_pct": 10.057733024905025,
+    "overall_area_MAE_pct": 8.243525521424637
+  },
+  "selection_reason": "Among the tested learning rates, 1e-4 provided the strongest overall validation performance. It achieved higher overall Dice and IoU than 1e-3 and 1e-5, while also producing the lowest normalized HD95 and the lowest ED, ES, and overall LV area MAE. Because downstream quantitative LV analysis depends on both segmentation overlap and geometric fidelity, 1e-4 was selected for subsequent controlled experiments.",
+  "next_experiment": "Phase 1B-2 \u2014 Optimizer Comparison"
+}

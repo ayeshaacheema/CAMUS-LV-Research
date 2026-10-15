@@ -1,0 +1,43 @@
+{
+  "phase": "Phase 3A \u2014 EF Classification Target Definition",
+  "status": "COMPLETE_AND_FROZEN",
+  "primary_task": "Three-class EF-based functional classification",
+  "reference_source": "CAMUS Info_4CH.cfg EF",
+  "target_definition": {
+    "Lower_EF": "reference EF <= 40%",
+    "Intermediate_EF": "40% < reference EF < 50%",
+    "Higher_EF": "reference EF >= 50%"
+  },
+  "class_order": [
+    "Lower_EF",
+    "Intermediate_EF",
+    "Higher_EF"
+  ],
+  "terminology_note": "The categories are EF-based functional bands for an assistive, non-diagnostic research system. They are not used as standalone heart-failure diagnoses.",
+  "dataset": {
+    "total_patients": 500,
+    "train": {
+      "n": 400,
+      "Lower_EF": 143,
+      "Intermediate_EF": 125,
+      "Higher_EF": 132
+    },
+    "validation": {
+      "n": 50,
+      "Lower_EF": 13,
+      "Intermediate_EF": 17,
+      "Higher_EF": 20
+    },
+    "test": {
+      "n": 50,
+      "Lower_EF": 16,
+      "Intermediate_EF": 14,
+      "Higher_EF": 20
+    }
+  },
+  "class_balance_decision": "No resampling, SMOTE, or other synthetic balancing is introduced at target-definition stage because all three classes have substantial representation and the training distribution is approximately balanced.",
+  "split_policy": "Original patient-level 400/50/50 split with seed 42 is retained.",
+  "test_policy": "The test partition is not used for classifier selection, feature selection, hyperparameter selection, threshold adjustment, or calibration.",
+  "historical_test_note": "The test partition had historical pilot exposure before the clean rebuild and is therefore not described as a pristine external test set.",
+  "target_frozen": true
+}

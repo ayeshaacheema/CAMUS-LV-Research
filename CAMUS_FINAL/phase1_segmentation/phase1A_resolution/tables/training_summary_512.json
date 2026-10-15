@@ -1,0 +1,11 @@
+{
+  "resolution": 512,
+  "parameters": 1940817,
+  "epochs_completed": 30,
+  "best_epoch": 28,
+  "best_val_dice_training": 0.9226366281509399,
+  "val_iou_at_best_dice_epoch": 0.8589319586753845,
+  "training_minutes": 15.602330176035563,
+  "model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1A_resolution/models/baseline_unet_512.keras",
+  "history_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1A_resolution/histories/history_512.csv"
+}

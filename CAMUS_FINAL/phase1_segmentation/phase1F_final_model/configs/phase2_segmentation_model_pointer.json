@@ -1,0 +1,13 @@
+{
+  "model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+  "config_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/configs/final_segmentation_config.json",
+  "manifest_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/configs/final_segmentation_manifest.json",
+  "sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "resolution": 256,
+  "threshold": 0.5,
+  "postprocessing": [
+    "largest connected component",
+    "binary hole filling"
+  ],
+  "frozen": true
+}

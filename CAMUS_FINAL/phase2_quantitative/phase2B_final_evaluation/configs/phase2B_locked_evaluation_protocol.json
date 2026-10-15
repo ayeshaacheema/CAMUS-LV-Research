@@ -1,0 +1,44 @@
+{
+  "status": "LOCKED_BEFORE_TEST_INFERENCE",
+  "partition": "test",
+  "n_patients": 50,
+  "n_frames": 100,
+  "phases": [
+    "ED",
+    "ES"
+  ],
+  "segmentation_model": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+  "segmentation_model_sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "segmentation_resolution": 256,
+  "segmentation_threshold": 0.5,
+  "segmentation_postprocessing": [
+    "largest connected component",
+    "binary hole filling"
+  ],
+  "long_axis_method": "PCA major axis",
+  "volume_method": "single-plane area-length",
+  "volume_equation": "V = (8/(3*pi)) * A^2/L",
+  "physical_spacing": "Original NIfTI pixel spacing adjusted for x/y stretch-resize scale factors.",
+  "outputs": [
+    "ED area",
+    "ES area",
+    "ED length",
+    "ES length",
+    "EDV",
+    "ESV",
+    "SV",
+    "EF"
+  ],
+  "reference_EF_source": "CAMUS Info_4CH.cfg EF",
+  "post_test_changes_allowed": false,
+  "prohibited_post_test_actions": [
+    "segmentation retraining",
+    "threshold tuning",
+    "postprocessing tuning",
+    "PCA/Feret reselection",
+    "area-bias correction",
+    "EF calibration",
+    "geometry-method modification"
+  ],
+  "test_partition_limitation": "The 50-patient partition was held out from the clean Phase 1A-1D and Phase 2A method-selection processes, but had historical pilot exposure and is therefore not claimed to be a pristine external test set."
+}

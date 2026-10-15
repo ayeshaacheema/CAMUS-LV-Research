@@ -1,0 +1,6 @@
+transition,count
+Intermediate_EF -> Lower_EF,6
+Intermediate_EF -> Higher_EF,3
+Higher_EF -> Intermediate_EF,3
+Lower_EF -> Intermediate_EF,2
+Lower_EF -> Higher_EF,1

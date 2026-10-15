@@ -1,0 +1,60 @@
+{
+    "stage_1_input": {
+        "name": "A4C ED/ES Input",
+        "input": "Paired ED and ES echocardiographic frames",
+        "additional_information": "Physical pixel-spacing metadata"
+    },
+    "stage_2_segmentation": {
+        "name": "LV Segmentation",
+        "source_phase": "Phase 1",
+        "model": "Frozen Large U-Net",
+        "resolution": "256x256",
+        "output": "LV cavity masks for ED and ES",
+        "inference_threshold": 0.5,
+        "postprocessing": [
+            "Largest connected component",
+            "Binary hole filling"
+        ]
+    },
+    "stage_3_quantitative_analysis": {
+        "name": "LV Quantitative Analysis",
+        "source_phase": "Phase 2",
+        "geometry_method": "PCA-based long-axis estimation",
+        "measurements": [
+            "ED area",
+            "ES area",
+            "ED long-axis length",
+            "ES long-axis length",
+            "EDV",
+            "ESV",
+            "SV",
+            "EF"
+        ],
+        "volume_method": "2D single-plane area-length approximation"
+    },
+    "stage_4_classification": {
+        "name": "EF-Band Classification",
+        "source_phase": "Phase 3",
+        "classes": {
+            "Lower_EF": "EF <= 40%",
+            "Intermediate_EF": "40% < EF < 50%",
+            "Higher_EF": "EF >= 50%"
+        },
+        "classifier": "Frozen StandardScaler + Logistic Regression pipeline",
+        "confidence_output": "Maximum uncalibrated classifier probability"
+    },
+    "stage_5_reliability_context": {
+        "name": "Reliability Context",
+        "source_phase": "Phase 4",
+        "displayable_information": [
+            "Model confidence score",
+            "LV contour visualization",
+            "Explicit assistive/non-diagnostic notice"
+        ],
+        "important_constraint": "Confidence score must not be presented as a calibrated probability of correctness or as a reliability guarantee."
+    },
+    "stage_6_output": {
+        "name": "Clinician-Facing Assistive Results",
+        "purpose": "Present segmentation, quantitative measurements, EF-band classification, and reliability context for review."
+    }
+}

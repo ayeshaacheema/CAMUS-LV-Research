@@ -1,0 +1,6 @@
+metric,value
+Accuracy,0.66
+Balanced Accuracy,0.6273809523809524
+Macro F1,0.624087956021989
+Weighted F1,0.6457331334332834
+Cohen Kappa,0.4746600741656366

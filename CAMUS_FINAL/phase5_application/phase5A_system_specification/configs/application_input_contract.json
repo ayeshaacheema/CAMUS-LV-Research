@@ -1,0 +1,25 @@
+{
+    "supported_view": "Apical Four-Chamber (A4C)",
+    "required_frames": [
+        "End-Diastolic (ED) frame",
+        "End-Systolic (ES) frame"
+    ],
+    "frame_selection": "ED and ES frames must already be identified/provided. Automatic ED/ES frame detection is outside the validated scope of the current system.",
+    "image_requirements": {
+        "type": "2D echocardiographic image",
+        "processing_channels": 1,
+        "segmentation_resolution": "256x256",
+        "normalization": "Per-image min-max normalization",
+        "resize_strategy": "Stretch resize to 256x256"
+    },
+    "required_measurement_metadata": [
+        "Physical pixel-spacing information required to convert pixel measurements to millimetres"
+    ],
+    "unsupported_inputs": [
+        "Automatic analysis of arbitrary full echocardiographic videos",
+        "Automatic echocardiographic view recognition",
+        "Automatic ED/ES frame detection",
+        "Non-A4C views as validated inputs",
+        "Inputs without the physical scale information required for quantitative measurements"
+    ]
+}

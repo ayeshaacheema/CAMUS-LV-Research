@@ -1,0 +1,33 @@
+{
+  "experiment": "Phase 1B-2 \u2014 Controlled Optimizer Experiment",
+  "objective": "Compare Adam and AdamW while holding all other experimental settings fixed.",
+  "resolution": 256,
+  "learning_rate": 0.0001,
+  "architecture": "Baseline U-Net",
+  "parameters": 1940817,
+  "optimizers": [
+    "Adam",
+    "AdamW"
+  ],
+  "Adam_configuration": {
+    "learning_rate": 0.0001
+  },
+  "AdamW_configuration": {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001
+  },
+  "batch_size": 4,
+  "loss": "BCE + Dice",
+  "augmentation": false,
+  "epochs": 30,
+  "checkpoint_monitor": "val_dice_coefficient",
+  "checkpoint_mode": "max",
+  "threshold": 0.5,
+  "seed": 42,
+  "same_initial_weights": true,
+  "initial_weights_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1B_hyperparameters/configs/optimizer_experiment_initial_weights.weights.h5",
+  "train_patients": 400,
+  "validation_patients": 50,
+  "test_used": false,
+  "important_note": "AdamW weight decay was fixed at 1e-4 before optimizer training. Weight decay is not tuned in this experiment."
+}

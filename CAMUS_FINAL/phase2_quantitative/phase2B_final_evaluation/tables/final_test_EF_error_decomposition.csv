@@ -1,0 +1,4 @@
+comparison,interpretation,n,MAE,RMSE,bias,correlation
+Reference EF → GT-mask geometry EF,Geometry/reference disagreement,50,6.667598081482763,9.695449611439132,4.81003028483467,0.7994339708706756
+GT-mask geometry EF → predicted-mask EF,Segmentation-induced downstream disagreement,50,5.8940462895622705,7.561472478497836,0.10383829563790989,0.8474182871233769
+Reference EF → predicted-mask EF,Total end-to-end disagreement,50,8.190605194664975,11.024126942052918,4.91386858047258,0.7082776811817034

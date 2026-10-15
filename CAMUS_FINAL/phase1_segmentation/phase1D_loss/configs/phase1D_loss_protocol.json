@@ -1,0 +1,57 @@
+{
+  "experiment": "Phase 1D \u2014 Controlled Loss Function Experiment",
+  "status": "PROTOCOL FROZEN BEFORE TRAINING",
+  "variable_tested": "Loss function",
+  "loss_arms": {
+    "bce_dice": {
+      "description": "Binary cross-entropy + Dice loss"
+    },
+    "focal_dice": {
+      "description": "Focal loss + Dice loss",
+      "focal_alpha": 0.25,
+      "focal_gamma": 2.0
+    },
+    "tversky": {
+      "description": "Standalone Tversky loss",
+      "tversky_alpha": 0.5,
+      "tversky_beta": 0.5
+    }
+  },
+  "fixed_settings": {
+    "resolution": 256,
+    "architecture": "Large U-Net",
+    "filters": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "parameters": 7759521,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "batch_size": 2,
+    "augmentation": false,
+    "epochs": 30,
+    "threshold": 0.5,
+    "seed": 42
+  },
+  "initialization_control": "All three loss arms start from the exact same saved initial weights.",
+  "data_order_control": "All three arms use the same seeded training frame-order generator.",
+  "train_patients": 400,
+  "validation_patients": 50,
+  "train_frames_per_epoch": 800,
+  "validation_frames": 100,
+  "selection_dataset": "Validation set only",
+  "test_used": false,
+  "selection_metrics": [
+    "overall Dice",
+    "ED Dice",
+    "ES Dice",
+    "IoU",
+    "normalized HD95",
+    "ED area MAE",
+    "ES area MAE",
+    "overall area MAE"
+  ]
+}

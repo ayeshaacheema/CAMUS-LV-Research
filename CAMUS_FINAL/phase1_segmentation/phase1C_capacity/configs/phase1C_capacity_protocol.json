@@ -1,0 +1,61 @@
+{
+  "experiment": "Phase 1C \u2014 Controlled Model Capacity Experiment",
+  "status": "PROTOCOL FROZEN BEFORE TRAINING",
+  "variable_tested": "U-Net filter capacity",
+  "capacity_configurations": {
+    "small": [
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "medium": [
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "large": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ]
+  },
+  "parameter_counts": {
+    "small": 485673,
+    "medium": 1940817,
+    "large": 7759521
+  },
+  "fixed_settings": {
+    "resolution": 256,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "batch_size": 2,
+    "augmentation": false,
+    "loss": "BCE + Dice",
+    "epochs": 30,
+    "threshold": 0.5,
+    "seed": 42
+  },
+  "train_patients": 400,
+  "validation_patients": 50,
+  "train_frames_per_epoch": 800,
+  "validation_frames": 100,
+  "selection_dataset": "Validation set only",
+  "test_used": false,
+  "selection_metrics": [
+    "overall Dice",
+    "ED Dice",
+    "ES Dice",
+    "IoU",
+    "normalized HD95",
+    "ED area MAE",
+    "ES area MAE",
+    "overall area MAE",
+    "training efficiency"
+  ]
+}

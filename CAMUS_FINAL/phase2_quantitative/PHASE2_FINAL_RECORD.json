@@ -1,0 +1,287 @@
+{
+  "phase": "Phase 2 \u2014 LV Quantitative Analysis",
+  "status": "COMPLETE_AND_FROZEN",
+  "project_scope": "Assistive, non-diagnostic quantitative analysis of the left ventricle from A4C echocardiography.",
+  "dataset": "CAMUS",
+  "evaluation_partition": {
+    "partition": "test",
+    "n_patients": 50,
+    "n_frames": 100,
+    "ED_frames": 50,
+    "ES_frames": 50
+  },
+  "test_partition_note": "The test partition was excluded from the clean Phase 1A-1D model-selection experiments and from Phase 2A quantitative-method selection. However, because this partition had historical pilot exposure, it is not described as a pristine external test set.",
+  "segmentation_pipeline": {
+    "model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+    "model_sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+    "input_resolution": "256x256",
+    "architecture": "Large U-Net",
+    "trainable_parameters": 7759521,
+    "threshold": 0.5,
+    "postprocessing": [
+      "largest connected component",
+      "binary hole filling"
+    ],
+    "status": "FROZEN"
+  },
+  "quantitative_pipeline": {
+    "physical_measurement": "Original NIfTI pixel spacing adjusted separately in x and y for stretch-resize scaling.",
+    "LV_area": "binary LV cavity area in mm^2",
+    "long_axis_method": "PCA major axis",
+    "long_axis_selection_partition": "validation",
+    "volume_method": "single-plane A4C area-length",
+    "volume_equation": "V = (8/(3*pi)) * A^2/L",
+    "EDV": "ED area-length volume in mL",
+    "ESV": "ES area-length volume in mL",
+    "SV": "EDV - ESV",
+    "EF": "(EDV - ESV) / EDV * 100",
+    "reference_EF": "CAMUS Info_4CH.cfg EF",
+    "status": "FROZEN"
+  },
+  "sanity_checks": {
+    "all_GT_EDV_positive": true,
+    "all_GT_ESV_positive": true,
+    "all_PRED_EDV_positive": true,
+    "all_PRED_ESV_positive": true,
+    "GT_EF_within_0_100": true,
+    "PRED_EF_within_0_100": true,
+    "all_GT_EDV_greater_than_ESV": true,
+    "all_PRED_EDV_greater_than_ESV": true,
+    "failed_checks": 0
+  },
+  "segmentation_to_measurement_results": {
+    "ED_area": {
+      "MAE_mm2": 203.1518,
+      "RMSE_mm2": 255.3348,
+      "bias_mm2": -146.0928,
+      "correlation": 0.9417,
+      "relative_MAE_pct": 6.8817,
+      "relative_bias_pct": -4.3253
+    },
+    "ES_area": {
+      "MAE_mm2": 179.2046,
+      "RMSE_mm2": 236.264,
+      "bias_mm2": -112.7997,
+      "correlation": 0.9116,
+      "relative_MAE_pct": 9.4824,
+      "relative_bias_pct": -5.0406
+    },
+    "ED_length": {
+      "MAE_mm": 2.7934,
+      "RMSE_mm": 3.8407,
+      "bias_mm": -0.9855,
+      "correlation": 0.9166,
+      "relative_MAE_pct": 3.4233,
+      "relative_bias_pct": -1.0651
+    },
+    "ES_length": {
+      "MAE_mm": 3.3978,
+      "RMSE_mm": 4.9774,
+      "bias_mm": -2.2619,
+      "correlation": 0.8589,
+      "relative_MAE_pct": 5.1209,
+      "relative_bias_pct": -3.2663
+    },
+    "EDV": {
+      "MAE_ml": 11.405,
+      "RMSE_ml": 14.6416,
+      "bias_ml": -8.2335,
+      "correlation": 0.9182,
+      "relative_MAE_pct": 11.8762,
+      "relative_bias_pct": -7.0275
+    },
+    "ESV": {
+      "MAE_ml": 7.1756,
+      "RMSE_ml": 9.5907,
+      "bias_ml": -4.1211,
+      "correlation": 0.907,
+      "relative_MAE_pct": 15.4781,
+      "relative_bias_pct": -6.1185
+    },
+    "SV": {
+      "MAE_ml": 7.9325,
+      "RMSE_ml": 10.445,
+      "bias_ml": -4.1124,
+      "correlation": 0.8761
+    },
+    "EF": {
+      "MAE_percentage_points": 5.894,
+      "RMSE_percentage_points": 7.5615,
+      "bias_percentage_points": 0.1038,
+      "correlation": 0.8474
+    }
+  },
+  "EF_error_decomposition": {
+    "reference_to_GT_geometry": {
+      "interpretation": "Geometry/reference-method disagreement",
+      "MAE_pp": 6.6676,
+      "RMSE_pp": 9.6954,
+      "bias_pp": 4.81,
+      "correlation": 0.7994
+    },
+    "GT_geometry_to_predicted_geometry": {
+      "interpretation": "Segmentation-induced downstream disagreement",
+      "MAE_pp": 5.894,
+      "RMSE_pp": 7.5615,
+      "bias_pp": 0.1038,
+      "correlation": 0.8474
+    },
+    "reference_to_predicted_geometry": {
+      "interpretation": "Total end-to-end disagreement",
+      "MAE_pp": 8.1906,
+      "RMSE_pp": 11.0241,
+      "bias_pp": 4.9139,
+      "correlation": 0.7083
+    },
+    "important_note": "These error components are not additive because signed errors may interact or partially cancel."
+  },
+  "bland_altman": {
+    "EDV_GT_vs_PRED": {
+      "bias_ml": -8.2335,
+      "lower_95_LOA_ml": -32.2046,
+      "upper_95_LOA_ml": 15.7376
+    },
+    "ESV_GT_vs_PRED": {
+      "bias_ml": -4.1211,
+      "lower_95_LOA_ml": -21.2672,
+      "upper_95_LOA_ml": 13.0251
+    },
+    "EF_GT_geometry_vs_PRED": {
+      "bias_pp": 0.1038,
+      "lower_95_LOA_pp": -14.8657,
+      "upper_95_LOA_pp": 15.0734
+    },
+    "EF_reference_vs_GT_geometry": {
+      "bias_pp": 4.81,
+      "lower_95_LOA_pp": -11.8571,
+      "upper_95_LOA_pp": 21.4771
+    },
+    "EF_reference_vs_PRED": {
+      "bias_pp": 4.9139,
+      "lower_95_LOA_pp": -14.6246,
+      "upper_95_LOA_pp": 24.4523
+    }
+  },
+  "image_quality_analysis": {
+    "Good": {
+      "n": 30,
+      "GT_to_PRED_EF_MAE_pp": 5.0287,
+      "GT_to_PRED_EF_bias_pp": -1.1799,
+      "Reference_to_PRED_EF_MAE_pp": 7.3117,
+      "Reference_to_PRED_EF_bias_pp": 5.296
+    },
+    "Medium": {
+      "n": 13,
+      "GT_to_PRED_EF_MAE_pp": 6.0277,
+      "GT_to_PRED_EF_bias_pp": 2.5894,
+      "Reference_to_PRED_EF_MAE_pp": 9.7344,
+      "Reference_to_PRED_EF_bias_pp": 6.4258
+    },
+    "Poor": {
+      "n": 7,
+      "GT_to_PRED_EF_MAE_pp": 9.3545,
+      "GT_to_PRED_EF_bias_pp": 0.9895,
+      "Reference_to_PRED_EF_MAE_pp": 9.0902,
+      "Reference_to_PRED_EF_bias_pp": 0.4682
+    },
+    "interpretation": "Segmentation-induced EF error increased descriptively from Good to Medium to Poor image quality. The Poor subgroup contained only seven patients, so this analysis is considered descriptive rather than definitive."
+  },
+  "paired_ED_vs_ES_analysis": {
+    "area": {
+      "ED_mean_absolute_relative_error_pct": 6.881699,
+      "ES_mean_absolute_relative_error_pct": 9.482421,
+      "median_paired_ES_minus_ED_difference_pp": 2.324142,
+      "ES_error_greater_n": 35,
+      "ED_error_greater_n": 15,
+      "n": 50,
+      "test": "one-sided paired Wilcoxon signed-rank",
+      "alternative": "ES absolute relative error > ED absolute relative error",
+      "wilcoxon_statistic": 897.0,
+      "p_value": 0.005765
+    },
+    "volume": {
+      "EDV_mean_absolute_relative_error_pct": 11.876217,
+      "ESV_mean_absolute_relative_error_pct": 15.47809,
+      "median_paired_ES_minus_ED_difference_pp": 2.293755,
+      "ES_error_greater_n": 31,
+      "ED_error_greater_n": 19,
+      "n": 50,
+      "test": "one-sided paired Wilcoxon signed-rank",
+      "alternative": "ESV absolute relative error > EDV absolute relative error",
+      "wilcoxon_statistic": 868.0,
+      "p_value": 0.01275
+    },
+    "interpretation": "Within this 50-patient evaluation sample, ES-related area and volume errors were greater than the corresponding ED errors under the predefined paired analysis."
+  },
+  "failure_case_analysis": {
+    "selection": "Three patients with the largest absolute GT-geometry to predicted-geometry EF disagreement.",
+    "cases": [
+      {
+        "patient_id": "patient0358",
+        "image_quality": "Poor",
+        "reference_EF_pct": 44.0,
+        "GT_geometry_EF_pct": 47.5,
+        "predicted_EF_pct": 29.4,
+        "GT_to_PRED_EF_error_pp": 18.06,
+        "ED_area_relative_error_pct": -11.98,
+        "ES_area_relative_error_pct": 1.25
+      },
+      {
+        "patient_id": "patient0367",
+        "image_quality": "Medium",
+        "reference_EF_pct": 62.0,
+        "GT_geometry_EF_pct": 65.1,
+        "predicted_EF_pct": 47.7,
+        "GT_to_PRED_EF_error_pp": 17.42,
+        "ED_area_relative_error_pct": -7.66,
+        "ES_area_relative_error_pct": 17.45
+      },
+      {
+        "patient_id": "patient0391",
+        "image_quality": "Good",
+        "reference_EF_pct": 35.0,
+        "GT_geometry_EF_pct": 39.9,
+        "predicted_EF_pct": 23.5,
+        "GT_to_PRED_EF_error_pp": 16.39,
+        "ED_area_relative_error_pct": -12.49,
+        "ES_area_relative_error_pct": 23.2
+      }
+    ],
+    "observed_pattern": "All three high-error cases showed ED cavity underestimation, while ES was either only slightly different or substantially overestimated. This asymmetric ED/ES error reduced the estimated ED-to-ES volume change and produced substantial EF underestimation.",
+    "image_quality_observation": "The three cases included one Good, one Medium, and one Poor quality scan, showing that large downstream errors were not confined to poor-quality images.",
+    "interpretation_limit": "These cases were deliberately selected as the largest errors and are not representative samples of the entire evaluation cohort."
+  },
+  "main_findings": [
+    "The frozen segmentation masks enabled extraction of physically scaled LV area, PCA long-axis length, EDV, ESV, SV and EF.",
+    "ES measurements were more sensitive to segmentation error than ED measurements.",
+    "ES area absolute relative error was 9.48% compared with 6.88% at ED.",
+    "ESV absolute relative error was 15.48% compared with 11.88% for EDV.",
+    "The paired ED/ES analysis supported greater ES-related error for both area and volume within this evaluation sample.",
+    "Predicted masks showed systematic underestimation of LV area and area-length volume on average.",
+    "GT-to-predicted EF bias was close to zero despite volume underestimation because ED and ES errors can partially cancel in the EF ratio.",
+    "Near-zero mean EF bias did not imply patient-level agreement; GT-to-predicted EF 95% limits of agreement were approximately -14.87 to +15.07 percentage points.",
+    "Ground-truth-mask geometry itself differed materially from CAMUS reference EF, indicating that total end-to-end EF disagreement cannot be attributed solely to segmentation.",
+    "Failure analysis demonstrated that asymmetric ED/ES segmentation errors can propagate nonlinearly into large EF errors."
+  ],
+  "limitations": [
+    "The volume calculation uses a simplified single-plane A4C area-length approximation.",
+    "GT-mask-derived geometric EDV, ESV and EF are internal geometric comparators and are not equivalent to direct clinical ground-truth measurements.",
+    "CAMUS Info_4CH.cfg provides reference EF but does not provide corresponding reference EDV and ESV values for direct absolute volume validation.",
+    "The Poor image-quality subgroup contains only seven patients.",
+    "The final evaluation partition had historical pilot exposure and is therefore not considered a pristine external test set.",
+    "CAMUS does not contain longitudinal repeated visits for these patients, so this phase does not validate true longitudinal change tracking."
+  ],
+  "methodological_integrity": {
+    "segmentation_model_changed_after_final_evaluation": false,
+    "segmentation_threshold_changed": false,
+    "postprocessing_changed": false,
+    "geometry_method_changed_after_test": false,
+    "bias_correction_applied": false,
+    "EF_calibration_applied": false,
+    "test_cases_removed": false,
+    "post_test_tuning_performed": false
+  },
+  "phase2_frozen": true,
+  "pipeline_changes_allowed": false,
+  "next_phase": "Phase 3 \u2014 EF-related classification"
+}

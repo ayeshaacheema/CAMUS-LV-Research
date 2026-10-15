@@ -1,0 +1,17 @@
+{
+    "phase": "Phase 5A",
+    "title": "Final System Specification",
+    "project_type": "Computer-vision-based assistive application for A4C echocardiography",
+    "system_role": "Assistive research prototype",
+    "diagnostic_claim": false,
+    "primary_objective": "Define the input, processing stages, outputs, interface requirements, reliability information, and limitations of the final application before implementation.",
+    "frozen_pipeline": true,
+    "model_retraining_allowed": false,
+    "hyperparameter_tuning_allowed": false,
+    "threshold_tuning_allowed": false,
+    "classifier_calibration_allowed": false,
+    "test_driven_changes_allowed": false,
+    "new_model_selection_allowed": false,
+    "implementation_changes_that_alter_frozen_results_allowed": false,
+    "phase5_role": "Integrate and present the previously frozen research pipeline, not optimize it further."
+}

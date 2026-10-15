@@ -1,0 +1,46 @@
+{
+    "phase": "Phase 5A",
+    "title": "Final System Specification",
+    "status": "COMPLETE_AND_FROZEN",
+    "system_name": "Computer Vision Based Assistive Application for A4C LV Analysis",
+    "system_role": "Assistive, non-diagnostic research prototype",
+    "supported_input": "Paired A4C ED/ES frames with required physical-scale metadata",
+    "pipeline": [
+        "A4C ED/ES input",
+        "Frozen LV segmentation",
+        "LV geometric measurement",
+        "2D single-plane volume estimation",
+        "EF estimation",
+        "Frozen EF-band classification",
+        "Confidence/context presentation",
+        "Clinician-facing assistive output"
+    ],
+    "frozen_research_dependencies": {
+        "Phase 1": "LV segmentation",
+        "Phase 2": "Quantitative LV analysis",
+        "Phase 3": "EF-band classification",
+        "Phase 4": "Robustness, uncertainty, and failure analysis"
+    },
+    "implementation_constraints": {
+        "retraining": false,
+        "hyperparameter_tuning": false,
+        "threshold_tuning": false,
+        "classifier_calibration": false,
+        "test_driven_pipeline_changes": false,
+        "new_diagnostic_claims": false
+    },
+    "required_application_outputs": [
+        "ED/ES LV contour visualization",
+        "ED/ES LV area",
+        "ED/ES LV long-axis length",
+        "EDV",
+        "ESV",
+        "SV",
+        "EF",
+        "EF band",
+        "Uncalibrated model confidence score",
+        "Assistive/non-diagnostic notice"
+    ],
+    "reliability_policy": "Display confidence and segmentation contours as contextual information without converting confidence into an automatic reliable/unreliable decision.",
+    "next_phase": "Phase 5B \u2014 Integrated Frozen Inference Pipeline"
+}

@@ -1,0 +1,15 @@
+{
+  "phase": "5C",
+  "status": "completed",
+  "timestamp_utc": "2026-10-09T05:45:06.198916+00:00",
+  "application_framework": "Gradio",
+  "demo_patient": "patient0173",
+  "ed_overlay_generated": true,
+  "es_overlay_generated": true,
+  "quantitative_measurements_generated": true,
+  "ef_band_classification_generated": true,
+  "uncalibrated_scores_displayed": true,
+  "non_diagnostic_disclaimer_included": true,
+  "frozen_models_modified": false,
+  "scope": "Research demonstration with paired identified A4C ED/ES NIfTI images."
+}

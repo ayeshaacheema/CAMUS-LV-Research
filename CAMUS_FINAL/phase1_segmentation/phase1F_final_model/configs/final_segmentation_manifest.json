@@ -1,0 +1,25 @@
+{
+  "status": "FROZEN",
+  "project": "Computer Vision Based Assistive Application for Analyzing ECHO Scans \u2014 LV A4C",
+  "phase": "Phase 1F \u2014 Freeze Final Segmentation Model",
+  "source_checkpoint": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1D_loss/models/bce_dice_best.keras",
+  "frozen_model": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+  "source_sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "frozen_sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "byte_identical": true,
+  "prediction_equivalence_verified": true,
+  "prediction_max_abs_difference": 0.0,
+  "selection_history": {
+    "Phase_1A": "256x256 resolution selected",
+    "Phase_1B1": "learning rate 1e-4 selected",
+    "Phase_1B2": "Adam retained",
+    "Phase_1B3": "batch size 2 selected",
+    "Phase_1B4": "no augmentation selected",
+    "Phase_1C": "Large U-Net selected",
+    "Phase_1D": "BCE + Dice selected",
+    "Phase_1E": "locked final segmentation evaluation completed"
+  },
+  "test_driven_tuning_after_phase1e": false,
+  "model_is_frozen_for_phase2": true,
+  "phase2_instruction": "Phase 2 must load this frozen model. Do not substitute an experimental Phase 1 checkpoint."
+}

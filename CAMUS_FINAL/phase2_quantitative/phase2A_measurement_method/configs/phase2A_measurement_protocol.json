@@ -1,0 +1,38 @@
+{
+  "phase": "Phase 2A \u2014 LV Quantitative Measurement Method",
+  "purpose": "Establish and validate the quantitative measurement methodology used downstream of the frozen LV segmentation model.",
+  "segmentation_model_frozen": true,
+  "segmentation_model": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+  "segmentation_model_sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "segmentation_changes_allowed": false,
+  "target_view": "A4C",
+  "target_structure": "LV cavity",
+  "phases": [
+    "ED",
+    "ES"
+  ],
+  "physical_units": {
+    "area": "mm^2",
+    "length": "mm",
+    "volume": "mL",
+    "EF": "%"
+  },
+  "candidate_long_axis_methods": [
+    "maximum_feret",
+    "PCA_major_axis"
+  ],
+  "volume_method": "single-plane area-length",
+  "volume_equation": "V = (8 / (3*pi)) * (A^2 / L)",
+  "method_selection_principle": "Geometry methods will first be evaluated using ground-truth LV masks so that measurement-model error is separated from segmentation error.",
+  "downstream_quantities": [
+    "ED area",
+    "ES area",
+    "ED long-axis length",
+    "ES long-axis length",
+    "EDV",
+    "ESV",
+    "SV",
+    "EF"
+  ],
+  "test_exposure_note": "The current 50-patient evaluation partition was previously inspected during historical pilot development. It was excluded from the clean Phase 1A-1D model-selection process, but is not claimed to be a pristine external test set."
+}

@@ -1,0 +1,66 @@
+{
+  "status": "DEVELOPMENT_COMPLETE_AND_FROZEN",
+  "selection_partition": "validation",
+  "selection_n_patients": 50,
+  "segmentation_model": {
+    "status": "FROZEN_FROM_PHASE1F",
+    "path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+    "sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+    "threshold": 0.5,
+    "postprocessing": [
+      "largest connected component",
+      "binary hole filling"
+    ]
+  },
+  "measurement_pipeline": {
+    "resize": "256x256 stretch resize",
+    "physical_spacing": "Original NIfTI spacing adjusted independently for x and y according to resize scale factors.",
+    "area": "binary LV cavity area in mm^2",
+    "long_axis": "PCA major axis",
+    "volume": "single-plane area-length",
+    "volume_equation": "V = (8/(3*pi)) * A^2/L",
+    "EDV": "ED single-plane area-length volume",
+    "ESV": "ES single-plane area-length volume",
+    "SV": "EDV - ESV",
+    "EF": "(EDV - ESV)/EDV * 100"
+  },
+  "geometry_method_selection": {
+    "candidates": [
+      "Maximum Feret",
+      "PCA major axis"
+    ],
+    "selected": "PCA major axis",
+    "PCA_validation_EF_MAE_pp": 8.1604,
+    "Feret_validation_EF_MAE_pp": 8.2922,
+    "PCA_lower_error_patients": 31,
+    "Feret_lower_error_patients": 19,
+    "note": "PCA showed only a small advantage. The selection applies to this predefined two-method comparison."
+  },
+  "validation_error_decomposition": {
+    "reference_to_GT_geometry": {
+      "EF_MAE_pp": 8.1076,
+      "EF_RMSE_pp": 9.3858,
+      "EF_bias_pp": 5.7688,
+      "correlation": 0.8488
+    },
+    "GT_geometry_to_predicted_geometry": {
+      "EF_MAE_pp": 7.0468,
+      "EF_RMSE_pp": 9.5155,
+      "EF_bias_pp": -2.1015,
+      "correlation": 0.774
+    },
+    "reference_to_predicted_geometry": {
+      "EF_MAE_pp": 8.7448,
+      "EF_RMSE_pp": 11.13,
+      "EF_bias_pp": 3.6672,
+      "correlation": 0.6944
+    }
+  },
+  "interpretation": {
+    "geometry_component": "Substantial EF disagreement remains even when ground-truth LV masks are used, showing that single-plane geometric estimation/reference differences contribute independently of segmentation.",
+    "segmentation_component": "Predicted masks introduce additional error into area, length, volume and EF measurements.",
+    "error_additivity": "Error components must not be treated as directly additive because signed errors can interact and partially cancel."
+  },
+  "frozen_before_test_quantitative_evaluation": true,
+  "test_results_may_change_pipeline": false
+}

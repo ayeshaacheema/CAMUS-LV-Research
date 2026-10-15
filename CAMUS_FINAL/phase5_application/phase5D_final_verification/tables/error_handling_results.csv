@@ -1,0 +1,5 @@
+test,rejected,message
+Missing ED input,True,'Please upload both ED and ES NIfTI frames.'
+Missing ES input,True,'Please upload both ED and ES NIfTI frames.'
+Both inputs missing,True,'Please upload both ED and ES NIfTI frames.'
+Corrupt NIfTI input,True,'Unable to analyze the supplied ED/ES files: File /tmp/tmp3wq8pu5w/invalid_frame.nii.gz is not a gzip file'

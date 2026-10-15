@@ -1,0 +1,29 @@
+{
+    "phase": "Phase 4A",
+    "title": "End-to-End Error Propagation Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "evaluation_population": "Frozen 50-patient evaluation set",
+    "main_findings": [
+        "Segmentation disagreement propagated strongly into corresponding ventricular volume disagreement. ED area error was strongly associated with EDV error (Spearman rho = 0.7228), while ES area error was strongly associated with ESV error (rho = 0.8580).",
+        "Poorer segmentation overlap was also associated with larger volume disagreement: ED Dice versus EDV error rho = -0.6122 and ES Dice versus ESV error rho = -0.7063.",
+        "Propagation from individual EDV/ESV absolute errors to segmentation-induced EF error was substantially weaker. EDV error showed rho = 0.1179 and ESV error rho = 0.2748 with segmentation-induced EF error. This is consistent with EF depending jointly on EDV and ESV rather than on either measurement alone.",
+        "Patients misclassified by the frozen EF-band classifier had substantially larger median segmentation-induced EF disagreement than correctly classified patients (8.9178 pp versus 3.2347 pp).",
+        "Median end-to-end EF disagreement was also larger in misclassified than correctly classified patients (11.4571 pp versus 6.8260 pp).",
+        "Geometry/reference EF disagreement alone did not show the same pattern: median disagreement was 4.4390 pp in misclassified patients and 5.4885 pp in correctly classified patients.",
+        "ES segmentation showed lower median Dice than ED (0.9300 versus 0.9457) and larger median relative area error (7.7022% versus 5.5976%).",
+        "Despite greater relative ES segmentation difficulty, median absolute volume error was larger for EDV than ESV (7.8553 mL versus 5.3671 mL). Absolute and relative errors therefore describe different aspects of the error pathway.",
+        "Reference-EF distance to the nearest 40% or 50% band boundary alone did not clearly separate correct and misclassified patients: medians were 5.0 pp and 4.0 pp respectively (exploratory p = 0.1671).",
+        "Descriptively, misclassification occurred in 46.15% of patients within 2 pp of a band boundary, compared with 19.05% among patients more than 5 pp away. These subgroup sizes are small and the bins are descriptive rather than validated thresholds.",
+        "The post-hoc end-to-end EF-error-to-boundary ratio had a median of 0.7943 in correctly classified cases and 2.7008 in misclassified cases. This supports the concept that classification vulnerability may depend on both measurement disagreement and boundary proximity, but the ratio is not a validated reliability score or decision threshold."
+    ],
+    "interpretation": "The frozen pipeline exhibits clear propagation of LV segmentation disagreement into quantitative volume measurements. Propagation into EF and final EF-band classification is more complex because EF depends jointly on EDV and ESV and because discrete classification also depends on the location of the resulting estimate relative to the predefined EF-band boundaries. Classification failure therefore cannot be explained by segmentation quality or boundary proximity alone.",
+    "limitations": [
+        "The analysis uses only the frozen 50-patient evaluation set.",
+        "The evaluation set had historical pilot exposure and is not described as a pristine external test set.",
+        "Statistical analyses are exploratory and multiple comparisons were performed.",
+        "Associations do not establish causal relationships.",
+        "Absolute error components are not additive.",
+        "Boundary proximity groups and error-to-boundary ratios were descriptive post-hoc analyses and were not used to modify the classifier or establish operational thresholds."
+    ],
+    "pipeline_changes_after_analysis": false
+}

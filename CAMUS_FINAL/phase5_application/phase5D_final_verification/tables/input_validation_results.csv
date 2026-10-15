@@ -1,0 +1,9 @@
+test,expected_valid,actual_valid,passed
+Valid input,True,True,True
+Zero spacing,False,False,True
+Negative spacing,False,False,True
+NaN spacing,False,False,True
+Infinite spacing,False,False,True
+Missing spacing,False,False,True
+Constant image,False,False,True
+NaN image,False,False,True

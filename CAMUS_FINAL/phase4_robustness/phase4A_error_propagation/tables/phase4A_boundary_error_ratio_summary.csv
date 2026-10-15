@@ -1,0 +1,3 @@
+classification_outcome,n,median_boundary_distance_pp,median_segmentation_EF_error_pp,median_end_to_end_EF_error_pp,median_segmentation_error_boundary_ratio,median_end_to_end_error_boundary_ratio
+Correct,35,5.0,3.234686799847985,6.826023377245505,0.43864892546671685,0.79433246031887
+Misclassified,15,4.0,8.917778769938685,11.457053891296027,2.1178525223116473,2.7008367734251655

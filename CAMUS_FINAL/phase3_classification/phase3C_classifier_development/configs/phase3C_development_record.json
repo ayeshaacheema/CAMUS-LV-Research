@@ -1,0 +1,136 @@
+{
+  "phase": "Phase 3C \u2014 Learned Classifier Development",
+  "status": "DEVELOPMENT_COMPLETE_AND_FROZEN",
+  "development_data": {
+    "train_patients": 400,
+    "validation_patients": 50,
+    "test_patients_used": 0
+  },
+  "classification_target": {
+    "type": "Frozen Phase 3A EF-based functional bands",
+    "Lower_EF": "reference EF <= 40%",
+    "Intermediate_EF": "40% < reference EF < 50%",
+    "Higher_EF": "reference EF >= 50%"
+  },
+  "input_source": "Frozen Phase 1 segmentation model followed by the frozen Phase 2 PCA area-length quantitative pipeline.",
+  "candidate_feature_sets": {
+    "F1_EF_only": [
+      "PRED_EF_pct"
+    ],
+    "F2_volumetric": [
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ],
+    "F3_full_quantitative": [
+      "PRED_ED_area_mm2",
+      "PRED_ES_area_mm2",
+      "PRED_ED_length_mm",
+      "PRED_ES_length_mm",
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ]
+  },
+  "classifier": {
+    "pipeline": "StandardScaler + LogisticRegression",
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "random_state": 42,
+    "class_weight": null,
+    "resampling": null
+  },
+  "selection": {
+    "primary_metric": "validation macro F1",
+    "tie_break": "fewer features for exact macro-F1 tie",
+    "selected_feature_set": "F3_full_quantitative",
+    "selected_features": [
+      "PRED_ED_area_mm2",
+      "PRED_ES_area_mm2",
+      "PRED_ED_length_mm",
+      "PRED_ES_length_mm",
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ],
+    "selected_n_features": 8
+  },
+  "candidate_validation_results": [
+    {
+      "feature_set": "F3_full_quantitative",
+      "n_features": 8,
+      "accuracy": 0.48,
+      "balanced_accuracy": 0.4982654600301659,
+      "macro_f1": 0.49692969870875175,
+      "weighted_f1": 0.48037417503586805,
+      "cohen_kappa": 0.21497584541062797
+    },
+    {
+      "feature_set": "F2_volumetric",
+      "n_features": 4,
+      "accuracy": 0.48,
+      "balanced_accuracy": 0.4982654600301659,
+      "macro_f1": 0.4928838099569807,
+      "weighted_f1": 0.47896526237989656,
+      "cohen_kappa": 0.21828021647624773
+    },
+    {
+      "feature_set": "F1_EF_only",
+      "n_features": 1,
+      "accuracy": 0.42,
+      "balanced_accuracy": 0.4394419306184012,
+      "macro_f1": 0.43526860193526856,
+      "weighted_f1": 0.41989989989989984,
+      "cohen_kappa": 0.12545235223160422
+    }
+  ],
+  "selected_validation_results": {
+    "accuracy": 0.48,
+    "balanced_accuracy": 0.4982654600301659,
+    "macro_f1": 0.49692969870875175,
+    "weighted_f1": 0.48037417503586805,
+    "cohen_kappa": 0.21497584541062797,
+    "correct": 24,
+    "incorrect": 26
+  },
+  "selected_validation_confusion_matrix": {
+    "class_order": [
+      "Lower_EF",
+      "Intermediate_EF",
+      "Higher_EF"
+    ],
+    "matrix": [
+      [
+        8,
+        4,
+        1
+      ],
+      [
+        2,
+        9,
+        6
+      ],
+      [
+        2,
+        11,
+        7
+      ]
+    ]
+  },
+  "selected_model_artifact": {
+    "path": "/content/drive/MyDrive/CAMUS_FINAL/phase3_classification/phase3C_classifier_development/models/phase3C_selected_logistic_regression.joblib",
+    "sha256": "2ab03a57d0655aa557d0f3ce30c7438c84baa8e068575ba0ebc2ead3344194e6"
+  },
+  "development_constraints": {
+    "segmentation_model_modified": false,
+    "quantitative_pipeline_modified": false,
+    "classification_thresholds_modified": false,
+    "test_data_used_for_selection": false,
+    "post_validation_hyperparameter_search": false
+  },
+  "interpretation": "Among the three predefined quantitative feature representations, F3_full_quantitative achieved the highest validation macro F1 and was therefore selected. The selected classifier is frozen before final test evaluation. Validation performance is moderate and does not establish clinical diagnostic performance.",
+  "phase3C_frozen": true
+}

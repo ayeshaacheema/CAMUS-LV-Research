@@ -1,0 +1,5 @@
+boundary_distance_group,n,correct_n,mean_abs_EF_error_pp,incorrect_n,misclassification_rate_pct
+<=2 pp,13,8,8.527319781326899,5,38.46153846153846
+>2 to 5 pp,16,8,8.08903992540916,8,50.0
+>5 to 10 pp,13,12,5.121715483052588,1,7.6923076923076925
+>10 pp,8,5,12.8335203112211,3,37.5

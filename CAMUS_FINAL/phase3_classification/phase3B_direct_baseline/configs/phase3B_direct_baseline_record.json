@@ -1,0 +1,164 @@
+{
+  "phase": "Phase 3B \u2014 Direct Geometry Classification Baseline",
+  "status": "COMPLETE_AND_FROZEN",
+  "task": "Direct three-class EF-based functional classification using the frozen Phase 2 predicted EF.",
+  "evaluation_partition": {
+    "split": "test",
+    "n_patients": 50
+  },
+  "method": "CAMUS reference EF was converted to the frozen Phase 3A EF bands and compared with the class obtained by applying the identical fixed bands to the frozen Phase 2 predicted EF. No classifier was trained.",
+  "class_definition": {
+    "Lower_EF": "EF <= 40%",
+    "Intermediate_EF": "40% < EF < 50%",
+    "Higher_EF": "EF >= 50%"
+  },
+  "terminology_note": "These labels represent EF-based functional bands for an assistive, non-diagnostic research system and are not standalone heart-failure diagnoses.",
+  "reference_distribution": {
+    "Lower_EF": 16,
+    "Intermediate_EF": 14,
+    "Higher_EF": 20
+  },
+  "predicted_distribution": {
+    "Lower_EF": 13,
+    "Intermediate_EF": 11,
+    "Higher_EF": 26
+  },
+  "performance": {
+    "accuracy": 0.66,
+    "balanced_accuracy": 0.6274,
+    "macro_F1": 0.6241,
+    "weighted_F1": 0.6457,
+    "cohen_kappa": 0.4747,
+    "correct_patients": 33,
+    "incorrect_patients": 17
+  },
+  "per_class_performance": {
+    "Lower_EF": {
+      "precision": 0.7692,
+      "recall": 0.625,
+      "F1": 0.6897,
+      "support": 16
+    },
+    "Intermediate_EF": {
+      "precision": 0.4545,
+      "recall": 0.3571,
+      "F1": 0.4,
+      "support": 14
+    },
+    "Higher_EF": {
+      "precision": 0.6923,
+      "recall": 0.9,
+      "F1": 0.7826,
+      "support": 20
+    }
+  },
+  "confusion_matrix": {
+    "class_order": [
+      "Lower_EF",
+      "Intermediate_EF",
+      "Higher_EF"
+    ],
+    "matrix": [
+      [
+        10,
+        4,
+        2
+      ],
+      [
+        3,
+        5,
+        6
+      ],
+      [
+        0,
+        2,
+        18
+      ]
+    ]
+  },
+  "transition_analysis": {
+    "total_errors": 17,
+    "adjacent_class_errors": 15,
+    "two_class_errors": 2,
+    "adjacent_error_fraction_pct": 88.24,
+    "predicted_higher_band": 12,
+    "predicted_lower_band": 5,
+    "exact_transitions": {
+      "Lower_to_Intermediate": 4,
+      "Lower_to_Higher": 2,
+      "Intermediate_to_Lower": 3,
+      "Intermediate_to_Higher": 6,
+      "Higher_to_Intermediate": 2,
+      "Higher_to_Lower": 0
+    }
+  },
+  "boundary_analysis": {
+    "correct": {
+      "n": 33,
+      "mean_distance_pp": 7.0,
+      "median_distance_pp": 6.0
+    },
+    "incorrect": {
+      "n": 17,
+      "mean_distance_pp": 5.647,
+      "median_distance_pp": 4.0
+    },
+    "mann_whitney_U": 331.0,
+    "two_sided_p_value": 0.303953,
+    "interpretation": "Misclassified patients were descriptively closer to the nearest 40% or 50% EF boundary, but the difference was not statistically significant in this 50-patient evaluation sample. Boundary proximity alone therefore did not explain all classification errors.",
+    "analysis_type": "descriptive post-hoc locked-baseline analysis",
+    "used_for_threshold_tuning": false
+  },
+  "two_class_jump_analysis": {
+    "n_cases": 2,
+    "patient0217": {
+      "image_quality": "Good",
+      "reference_EF_pct": 19.0,
+      "GT_geometry_EF_pct": 67.673,
+      "predicted_geometry_EF_pct": 61.795,
+      "reference_to_GT_geometry_error_pp": 48.673,
+      "GT_geometry_to_predicted_error_pp": -5.878,
+      "reference_to_predicted_error_pp": 42.795,
+      "transition": "Lower_EF -> Higher_EF",
+      "interpretation": "The dominant disagreement occurred before segmentation propagation: even GT-mask geometry produced an EF far above the CAMUS reference EF. The segmentation-derived EF was slightly lower than GT geometry. This case is therefore primarily a reference-versus-geometric-method disagreement rather than a segmentation-driven classification failure."
+    },
+    "patient0072": {
+      "image_quality": "Medium",
+      "reference_EF_pct": 38.0,
+      "GT_geometry_EF_pct": 47.885,
+      "predicted_geometry_EF_pct": 53.532,
+      "reference_to_GT_geometry_error_pp": 9.885,
+      "GT_geometry_to_predicted_error_pp": 5.647,
+      "reference_to_predicted_error_pp": 15.532,
+      "transition": "Lower_EF -> Higher_EF",
+      "interpretation": "Both reference-versus-geometry disagreement and segmentation propagation contributed to the final two-class transition."
+    }
+  },
+  "main_findings": [
+    "The direct frozen quantitative pipeline achieved 66.0% exact three-class agreement with the reference EF-based functional bands.",
+    "Higher EF showed the highest recall at 90.0%, while Intermediate EF was the most difficult class with 35.7% recall and F1 of 0.400.",
+    "Fifteen of seventeen classification errors (88.24%) were adjacent-band errors.",
+    "Twelve of seventeen misclassified patients were assigned to a higher EF band than their reference band.",
+    "Boundary proximity alone did not adequately explain classification disagreement.",
+    "The two largest class-jump errors had different error sources, demonstrating that end-to-end classification failure cannot be attributed solely to segmentation."
+  ],
+  "methodological_integrity": {
+    "classifier_trained": false,
+    "EF_boundaries_modified": false,
+    "segmentation_modified": false,
+    "phase2_geometry_modified": false,
+    "bias_correction_applied": false,
+    "calibration_applied": false,
+    "patients_removed": false,
+    "test_based_tuning": false
+  },
+  "limitations": [
+    "The evaluation contains only 50 patients.",
+    "The Intermediate EF band spans a relatively narrow range and is sensitive to quantitative EF disagreement.",
+    "Predicted EF inherits both segmentation error and single-plane geometry/reference-method disagreement.",
+    "The evaluation partition had historical pilot exposure and is not described as a pristine external test set."
+  ],
+  "phase3B_frozen": true,
+  "post_evaluation_threshold_tuning": false,
+  "next_phase": "Phase 3C \u2014 Learned Classifier Development"
+}

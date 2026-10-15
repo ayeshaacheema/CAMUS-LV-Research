@@ -1,0 +1,66 @@
+{
+  "experiment": "Phase 1D \u2014 Controlled Loss Function Experiment",
+  "status": "COMPLETED",
+  "selected_loss": "BCE + Dice",
+  "selected_loss_key": "bce_dice",
+  "losses_compared": {
+    "bce_dice": "Binary cross-entropy + Dice loss",
+    "focal_dice": "Focal loss + Dice loss",
+    "tversky": "Standalone Tversky loss"
+  },
+  "fixed_loss_parameters": {
+    "focal_alpha": 0.25,
+    "focal_gamma": 2.0,
+    "tversky_alpha": 0.5,
+    "tversky_beta": 0.5
+  },
+  "fixed_settings": {
+    "resolution": 256,
+    "architecture": "Large U-Net",
+    "filters": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "parameters": 7759521,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "batch_size": 2,
+    "augmentation": false,
+    "epochs": 30,
+    "threshold": 0.5,
+    "seed": 42
+  },
+  "selected_validation_results": {
+    "overall_dice": 0.9350125220031618,
+    "ED_dice": 0.9442841150608569,
+    "ES_dice": 0.9257409289454666,
+    "overall_iou": 0.8800762614822247,
+    "precision": 0.9394634284481954,
+    "recall": 0.9356020488545052,
+    "normalized_hd95": 0.021656494661775008,
+    "ED_area_MAE_pct": 5.838892413381289,
+    "ES_area_MAE_pct": 9.569601561360683,
+    "overall_area_MAE_pct": 7.704246987370986,
+    "ED_signed_area_error_pct": -0.9072219728464826,
+    "ES_signed_area_error_pct": 1.6548005809138397,
+    "overall_signed_area_error_pct": 0.37378930403367866
+  },
+  "focal_vs_bce_dice_paired": {
+    "mean_dice_change": 7.780481972738618e-05,
+    "mean_iou_change": 0.00031390618880206776,
+    "mean_hd95_change": 0.0004680646400213029,
+    "mean_area_MAE_change_pct": 0.7371464956233876,
+    "frames_dice_improved": 53,
+    "frames_dice_worsened": 47,
+    "frames_area_error_reduced": 50
+  },
+  "selection_dataset": "Validation set only",
+  "test_set_used": false,
+  "selection_reason": "BCE + Dice was retained because it provided the strongest balance between segmentation overlap, boundary accuracy, and LV area fidelity. Focal + Dice produced only a negligible increase in mean Dice while increasing normalized HD95 and area error. BCE + Dice achieved lower ED, ES, and overall area MAE and substantially lower overall signed area bias. These properties are particularly relevant because subsequent quantitative LV analysis depends on accurate mask geometry and area estimation.",
+  "interpretation_note": "The loss comparison was controlled using the same Large U-Net architecture, identical initial weights, the same seeded data order, and the same training budget. The result applies to the specific predefined loss configurations tested here; it does not imply that all possible focal or Tversky configurations would perform worse.",
+  "selected_checkpoint": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1D_loss/models/bce_dice_best.keras",
+  "next_stage": "Phase 1E \u2014 Final Segmentation Validation"
+}

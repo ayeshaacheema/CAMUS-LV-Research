@@ -1,0 +1,11 @@
+{
+    "phase": "Phase 4B",
+    "title": "Confidence and Uncertainty Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "n_patients": 50,
+    "classifier_retrained": false,
+    "confidence_threshold_optimized": false,
+    "probability_calibration_performed": false,
+    "pipeline_modified": false,
+    "next_phase": "Phase 4C \u2014 Image Quality and Failure Subgroup Analysis"
+}

@@ -1,0 +1,4 @@
+image_quality,correct,misclassified,total,misclassification_rate_pct
+Good,24,6,30,20.0
+Medium,7,6,13,46.15384615384615
+Poor,4,3,7,42.857142857142854

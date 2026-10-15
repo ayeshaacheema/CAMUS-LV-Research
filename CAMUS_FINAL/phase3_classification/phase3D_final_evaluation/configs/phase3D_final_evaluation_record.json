@@ -1,0 +1,113 @@
+{
+  "phase": "Phase 3D \u2014 Final Locked Evaluation",
+  "status": "COMPLETE_AND_FROZEN",
+  "evaluation_set": {
+    "n_patients": 50,
+    "role": "locked final evaluation set",
+    "historical_note": "This partition had historical pilot exposure earlier in the overall project; therefore it is not described as a pristine external or never-seen test cohort."
+  },
+  "classification_target": {
+    "Lower_EF": "reference EF <= 40%",
+    "Intermediate_EF": "40% < reference EF < 50%",
+    "Higher_EF": "reference EF >= 50%"
+  },
+  "learned_classifier": {
+    "selected_feature_set": "F3_full_quantitative",
+    "features": [
+      "PRED_ED_area_mm2",
+      "PRED_ES_area_mm2",
+      "PRED_ED_length_mm",
+      "PRED_ES_length_mm",
+      "PRED_EDV_ml",
+      "PRED_ESV_ml",
+      "PRED_SV_ml",
+      "PRED_EF_pct"
+    ],
+    "model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase3_classification/phase3C_classifier_development/models/phase3C_selected_logistic_regression.joblib",
+    "model_sha256": "2ab03a57d0655aa557d0f3ce30c7438c84baa8e068575ba0ebc2ead3344194e6",
+    "training_or_tuning_in_phase3D": false
+  },
+  "final_learned_classifier_metrics": {
+    "accuracy": 0.7,
+    "balanced_accuracy": 0.6732142857142858,
+    "macro_f1": 0.6629307007355788,
+    "weighted_f1": 0.6860882694541232,
+    "cohen_kappa": 0.5415647921760391,
+    "correct": 35,
+    "incorrect": 15
+  },
+  "confusion_matrix": {
+    "class_order": [
+      "Lower_EF",
+      "Intermediate_EF",
+      "Higher_EF"
+    ],
+    "matrix": [
+      [
+        13,
+        2,
+        1
+      ],
+      [
+        6,
+        5,
+        3
+      ],
+      [
+        0,
+        3,
+        17
+      ]
+    ]
+  },
+  "per_class_metrics": [
+    {
+      "class": "Lower_EF",
+      "precision": 0.6842105263157895,
+      "recall": 0.8125,
+      "f1": 0.7428571428571429,
+      "support": 16
+    },
+    {
+      "class": "Intermediate_EF",
+      "precision": 0.5,
+      "recall": 0.35714285714285715,
+      "f1": 0.4166666666666667,
+      "support": 14
+    },
+    {
+      "class": "Higher_EF",
+      "precision": 0.8095238095238095,
+      "recall": 0.85,
+      "f1": 0.8292682926829268,
+      "support": 20
+    }
+  ],
+  "direct_geometry_baseline": {
+    "accuracy": 0.66,
+    "balanced_accuracy": 0.6274,
+    "macro_f1": 0.6241,
+    "weighted_f1": 0.6457,
+    "cohen_kappa": 0.4747
+  },
+  "learned_minus_baseline": {
+    "accuracy": 0.039999999999999925,
+    "balanced_accuracy": 0.04581428571428581,
+    "macro_f1": 0.038830700735578816,
+    "weighted_f1": 0.040388269454123105,
+    "cohen_kappa": 0.06686479217603913
+  },
+  "error_analysis": {
+    "total_misclassifications": 15,
+    "adjacent_band_errors": 14,
+    "two_band_errors": 1
+  },
+  "protocol_integrity": {
+    "classifier_retrained_on_test": false,
+    "feature_set_changed_after_test": false,
+    "classification_thresholds_changed": false,
+    "test_based_calibration": false,
+    "post_test_model_selection": false
+  },
+  "interpretation": "The frozen learned classifier achieved higher performance than the frozen direct geometry baseline on the locked 50-patient evaluation set. Macro F1 increased from 0.6241 to 0.6629. The Intermediate EF band remained the most challenging class. Results are interpreted as assistive research performance and not as evidence of clinical diagnostic validity."
+}

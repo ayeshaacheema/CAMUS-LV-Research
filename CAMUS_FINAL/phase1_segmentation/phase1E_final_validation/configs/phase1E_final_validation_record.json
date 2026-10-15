@@ -1,0 +1,72 @@
+{
+  "phase": "Phase 1E \u2014 Final Segmentation Validation",
+  "status": "COMPLETED",
+  "model_selection_complete_before_test": true,
+  "retraining_performed": false,
+  "test_driven_tuning_performed": false,
+  "final_configuration": {
+    "resolution": 256,
+    "architecture": "Large U-Net",
+    "filters": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "parameters": 7759521,
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "batch_size": 2,
+    "augmentation": false,
+    "loss": "BCE + Dice",
+    "threshold": 0.5,
+    "postprocessing": [
+      "largest connected component",
+      "binary hole filling"
+    ]
+  },
+  "evaluation": {
+    "patients": 50,
+    "frames": 100,
+    "ED_frames": 50,
+    "ES_frames": 50
+  },
+  "final_test_results": {
+    "patients": 50,
+    "frames": 100,
+    "overall_dice": 0.9292481556617648,
+    "ED_dice": 0.9395635756082535,
+    "ES_dice": 0.9189327357152763,
+    "overall_iou": 0.8699584971647103,
+    "ED_iou": 0.8870461462092147,
+    "ES_iou": 0.852870848120206,
+    "precision": 0.9562674294477749,
+    "recall": 0.9083883951768715,
+    "normalized_hd95": 0.025554083738111993,
+    "ED_normalized_hd95": 0.026438696593646453,
+    "ES_normalized_hd95": 0.024669470882577534,
+    "ED_area_MAE_pct": 6.881699118990541,
+    "ES_area_MAE_pct": 9.482420906708644,
+    "overall_area_MAE_pct": 8.182060012849593,
+    "ED_signed_area_error_pct": -4.325302795158596,
+    "ES_signed_area_error_pct": -5.040627585748648,
+    "overall_signed_area_error_pct": -4.682965190453622
+  },
+  "distribution_findings": {
+    "overall_dice_std": 0.03754565592079942,
+    "ED_dice_std": 0.025293156463445533,
+    "ES_dice_std": 0.044623074079794114,
+    "overall_min_dice": 0.7169951654890294,
+    "ED_min_dice": 0.8677988958658182,
+    "ES_min_dice": 0.7169951654890294,
+    "ED_frames_dice_below_0_90": 4,
+    "ES_frames_dice_below_0_90": 11,
+    "ED_frames_area_error_above_20pct": 1,
+    "ES_frames_area_error_above_20pct": 5
+  },
+  "interpretation": "The final configuration retained strong segmentation performance on the locked test evaluation, with only a modest reduction relative to validation. ES remained more challenging than ED, showing lower mean Dice, greater variability, and more high-area-error cases. The final test predictions also showed a negative signed LV area bias, indicating a tendency toward under-segmentation. No post-test correction or additional tuning was performed.",
+  "historical_test_exposure_limitation": "The 50-patient test partition had been inspected during earlier pilot development before the clean Phase 1 rebuild. It was not used during clean Phase 1A-1D model selection. Therefore these results represent the locked final evaluation of the clean pipeline, but are not claimed to constitute a pristine never-inspected external or independent test set.",
+  "decision": "Accept the selected segmentation configuration and freeze it for downstream quantitative LV analysis.",
+  "next_stage": "Phase 1F \u2014 Freeze Final Segmentation Model"
+}

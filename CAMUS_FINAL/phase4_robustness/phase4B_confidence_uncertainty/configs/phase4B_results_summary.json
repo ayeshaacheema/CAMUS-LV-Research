@@ -1,0 +1,51 @@
+{
+    "phase": "Phase 4B",
+    "title": "Confidence and Uncertainty Analysis",
+    "n_patients": 50,
+    "correct_predictions": 35,
+    "incorrect_predictions": 15,
+    "correct_vs_incorrect": {
+        "median_model_confidence_correct": 0.7081996893028056,
+        "median_model_confidence_incorrect": 0.6612860812961006,
+        "confidence_p_value": 0.0687,
+        "median_margin_correct": 0.42797610405135034,
+        "median_margin_incorrect": 0.34954005890439577,
+        "median_entropy_correct": 0.5938935135702608,
+        "median_entropy_incorrect": 0.6683758094266933
+    },
+    "confidence_vs_EF_error": {
+        "model_confidence_spearman_rho": 0.04,
+        "confidence_margin_spearman_rho": 0.083,
+        "normalized_entropy_spearman_rho": -0.0753
+    },
+    "reference_class_results": {
+        "Lower_EF": {
+            "n": 16,
+            "accuracy_pct": 81.25,
+            "median_confidence": 0.7231
+        },
+        "Intermediate_EF": {
+            "n": 14,
+            "accuracy_pct": 35.7143,
+            "median_confidence": 0.636
+        },
+        "Higher_EF": {
+            "n": 20,
+            "accuracy_pct": 85.0,
+            "median_confidence": 0.718
+        }
+    },
+    "most_confident_misclassification": {
+        "patient_id": "patient0358",
+        "model_confidence": 0.8882093899525626,
+        "reference_class": "Intermediate_EF",
+        "predicted_class": "Lower_EF"
+    },
+    "protocol_notes": [
+        "Classifier remained frozen.",
+        "No confidence threshold was optimized.",
+        "No probability calibration was performed using the evaluation set.",
+        "Class scores are described as model confidence scores, not calibrated probabilities of correctness.",
+        "All statistical analyses are descriptive/exploratory."
+    ]
+}

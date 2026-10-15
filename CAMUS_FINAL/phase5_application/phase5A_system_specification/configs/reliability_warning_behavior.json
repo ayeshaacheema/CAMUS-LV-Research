@@ -1,0 +1,23 @@
+{
+    "confidence_display": {
+        "enabled": true,
+        "label": "Model confidence score",
+        "calibrated": false,
+        "automatic_reliable_unreliable_threshold": null,
+        "reason": "Phase 4B showed that confidence alone did not reliably separate correct from incorrect predictions and that high-confidence errors occurred."
+    },
+    "segmentation_review": {
+        "predicted_contours_visible": true,
+        "purpose": "Enable visual review of the predicted LV cavity segmentation before interpreting downstream measurements."
+    },
+    "automatic_quality_warning": {
+        "enabled": false,
+        "reason": "CAMUS ImageQuality was analyzed as dataset metadata in Phase 4C but was not developed or validated as an automatic patient-level quality detector."
+    },
+    "automatic_failure_detection": {
+        "enabled": false,
+        "reason": "Phase 4 identified failure patterns descriptively but did not validate a patient-level failure detector."
+    },
+    "mandatory_notice": "Assistive research output \u2014 not intended for independent diagnosis. Review the predicted LV contours, quantitative measurements, and original echocardiographic information together with appropriate clinical context.",
+    "confidence_notice": "The displayed model confidence score is uncalibrated and must not be interpreted as the probability that the prediction is correct."
+}

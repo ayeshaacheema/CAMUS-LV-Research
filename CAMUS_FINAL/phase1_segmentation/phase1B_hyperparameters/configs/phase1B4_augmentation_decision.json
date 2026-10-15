@@ -1,0 +1,63 @@
+{
+  "experiment": "Phase 1B-4 \u2014 Controlled Augmentation Experiment",
+  "status": "COMPLETED",
+  "selected_augmentation": false,
+  "selected_configuration": "no_augmentation",
+  "augmentation_policy_tested": {
+    "horizontal_flip_probability": 0.5,
+    "max_rotation_degrees": 10.0,
+    "max_translation_fraction": 0.05,
+    "brightness_delta": 0.1,
+    "contrast_lower": 0.9,
+    "contrast_upper": 1.1
+  },
+  "fixed_resolution": 256,
+  "fixed_learning_rate": 0.0001,
+  "fixed_optimizer": "Adam",
+  "fixed_batch_size": 2,
+  "fixed_architecture": "Baseline U-Net",
+  "parameter_count": 1940817,
+  "fixed_loss": "BCE + Dice",
+  "epochs": 30,
+  "threshold": 0.5,
+  "seed": 42,
+  "selection_dataset": "Validation set only",
+  "validation_frames": 100,
+  "test_set_used": false,
+  "selected_validation_results": {
+    "overall_dice": 0.9334588076488549,
+    "ED_dice": 0.9434798650740552,
+    "ES_dice": 0.9234377502236546,
+    "overall_iou": 0.8774061057238514,
+    "precision": 0.9348112737594735,
+    "recall": 0.9377803383388877,
+    "normalized_hd95": 0.022576260138292156,
+    "ED_area_MAE_pct": 6.3139609064275195,
+    "ES_area_MAE_pct": 10.31305946181,
+    "overall_area_MAE_pct": 8.313510184118762,
+    "ED_signed_area_error_pct": 0.4120565893803281,
+    "ES_signed_area_error_pct": 2.1078987300156182,
+    "overall_signed_area_error_pct": 1.2599776596979733
+  },
+  "augmented_validation_results": {
+    "overall_dice": 0.926456344853357,
+    "ED_dice": 0.9402743485046667,
+    "ES_dice": 0.9126383412020472,
+    "overall_iou": 0.8665955455154193,
+    "normalized_hd95": 0.025273737844156048,
+    "ED_area_MAE_pct": 6.569959854742466,
+    "ES_area_MAE_pct": 14.129953429621441,
+    "overall_area_MAE_pct": 10.349956642181953
+  },
+  "paired_mean_change_aug_minus_control": {
+    "dice": -0.007002462795497866,
+    "iou": -0.010810560208432176,
+    "normalized_hd95": 0.002697477705863897,
+    "area_MAE_pct": 2.036446458063194
+  },
+  "frames_with_improved_dice": 44,
+  "frames_with_worsened_dice": 56,
+  "selection_reason": "No augmentation was selected because it produced stronger validation performance than the predefined conservative augmentation policy. The no-augmentation model achieved higher overall, ED, and ES Dice; higher IoU; lower normalized HD95; and substantially lower LV area error, particularly at end-systole. Although the augmented model achieved higher recall, this was accompanied by lower precision and increased positive area bias. Paired frame-level analysis also showed negative mean changes in Dice and IoU and increased HD95 and area MAE under augmentation.",
+  "interpretation_note": "This result applies specifically to the conservative augmentation policy tested in this controlled experiment. It does not establish that all possible augmentation strategies are harmful for CAMUS LV segmentation.",
+  "next_experiment": "Phase 1C \u2014 Controlled Model Capacity Experiment"
+}

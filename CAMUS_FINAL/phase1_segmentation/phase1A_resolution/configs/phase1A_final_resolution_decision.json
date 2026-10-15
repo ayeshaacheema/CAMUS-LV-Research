@@ -1,0 +1,27 @@
+{
+  "phase": "Phase 1A \u2014 Controlled Resolution Experiment",
+  "status": "COMPLETED",
+  "selected_resolution": 256,
+  "selection_scope": "Working input resolution for subsequent Phase 1 experiments",
+  "architecture_used": "Baseline U-Net",
+  "parameter_count": 1940817,
+  "resolutions_compared": [
+    128,
+    256,
+    512
+  ],
+  "selection_dataset": "Validation set only",
+  "test_set_used": false,
+  "selected_256_validation_results": {
+    "overall_dice": 0.9311442380318734,
+    "ED_dice": 0.941275948784776,
+    "ES_dice": 0.9210125272789708,
+    "overall_iou": 0.873772882578904,
+    "ED_area_MAE_pct": 6.311538161444815,
+    "ES_area_MAE_pct": 10.91327510085281,
+    "overall_area_MAE_pct": 8.612406631148811
+  },
+  "reason_for_selection": "256x256 achieved the highest overall validation Dice and IoU and the lowest overall LV area MAE among the tested resolutions. It also produced lower ES area error than 128x128 and 512x512, while requiring substantially less training time than 512x512.",
+  "important_note": "Only the input resolution is selected at this stage. The current 1,940,817-parameter U-Net is a baseline model and is NOT the final segmentation model. Hyperparameters, model capacity, and loss function will be investigated in subsequent Phase 1 experiments.",
+  "next_phase": "Phase 1B \u2014 Controlled Hyperparameter Experiments"
+}

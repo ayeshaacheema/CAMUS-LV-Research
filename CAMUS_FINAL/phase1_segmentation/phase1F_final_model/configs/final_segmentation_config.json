@@ -1,0 +1,73 @@
+{
+  "model_name": "CAMUS A4C LV Final Segmentation Model",
+  "task": "Left ventricular cavity segmentation",
+  "view": "A4C",
+  "phases": [
+    "ED",
+    "ES"
+  ],
+  "dataset": "CAMUS",
+  "input": {
+    "resolution": [
+      256,
+      256
+    ],
+    "channels": 1,
+    "normalization": "per-image min-max normalization",
+    "resize": "stretch resize to 256x256"
+  },
+  "architecture": {
+    "name": "Large U-Net",
+    "filters": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "parameters": 7759521,
+    "output_activation": "sigmoid"
+  },
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "batch_size": 2,
+    "augmentation": false,
+    "loss": "BCE + Dice",
+    "maximum_epochs": 30,
+    "selected_checkpoint_epoch": 28,
+    "seed": 42
+  },
+  "inference": {
+    "threshold": 0.5,
+    "postprocessing": [
+      "largest connected component",
+      "binary hole filling"
+    ]
+  },
+  "final_model_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1F_final_model/models/final_lv_segmentation_model.keras",
+  "sha256": "65ec53959831c6b7c08747a5d94de6563580ce9ec052aa7b9afa614bee5705d3",
+  "phase1e_test_results": {
+    "patients": 50,
+    "frames": 100,
+    "overall_dice": 0.9292481556617648,
+    "ED_dice": 0.9395635756082535,
+    "ES_dice": 0.9189327357152763,
+    "overall_iou": 0.8699584971647103,
+    "ED_iou": 0.8870461462092147,
+    "ES_iou": 0.852870848120206,
+    "precision": 0.9562674294477749,
+    "recall": 0.9083883951768715,
+    "normalized_hd95": 0.025554083738111993,
+    "ED_normalized_hd95": 0.026438696593646453,
+    "ES_normalized_hd95": 0.024669470882577534,
+    "ED_area_MAE_pct": 6.881699118990541,
+    "ES_area_MAE_pct": 9.482420906708644,
+    "overall_area_MAE_pct": 8.182060012849593,
+    "ED_signed_area_error_pct": -4.325302795158596,
+    "ES_signed_area_error_pct": -5.040627585748648,
+    "overall_signed_area_error_pct": -4.682965190453622
+  },
+  "phase2_measurement_note": "Quantitative physical measurements must use the original NIfTI pixel spacing and account for the geometric scaling introduced by 256x256 stretch resizing.",
+  "frozen": true
+}

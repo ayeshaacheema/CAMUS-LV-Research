@@ -1,0 +1,13 @@
+gradio
+tensorflow==2.21.0
+numpy
+pandas
+scipy
+scikit-learn
+joblib
+nibabel
+opencv-python-headless
+Pillow
+matplotlib
+reportlab
+psutil

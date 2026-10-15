@@ -1,0 +1,33 @@
+{
+    "phase": "Phase 4C",
+    "title": "Image Quality and Failure Subgroup Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "n_patients": 50,
+    "image_quality_counts": {
+        "Good": 30,
+        "Medium": 13,
+        "Poor": 7
+    },
+    "main_findings": [
+        "Good-quality cases generally showed the strongest performance across the frozen pipeline, including higher segmentation overlap, lower quantitative errors, and higher EF-band classification accuracy.",
+        "Median ED Dice decreased from 0.9519 in Good-quality cases to 0.9439 in Medium and 0.9130 in Poor cases.",
+        "Image-quality effects were not uniform across ED and ES. Medium-quality cases showed the largest median ES area error and ESV error, whereas Poor-quality cases showed the lowest median ED Dice.",
+        "Median segmentation-induced EF error was 3.6443 pp for Good, 4.6977 pp for Medium, and 9.0898 pp for Poor-quality cases.",
+        "Median end-to-end EF error was 5.2637 pp for Good, 8.2648 pp for Medium, and 7.6206 pp for Poor-quality cases. Therefore, downstream degradation was not strictly monotonic with the ordinal quality labels.",
+        "EF-band classification accuracy was 80.0% in Good, 53.85% in Medium, and 57.14% in Poor-quality cases.",
+        "Classifier confidence, confidence margin, and entropy were similar across image-quality groups, indicating that classifier confidence did not clearly reflect CAMUS image-quality category.",
+        "Among the exploratory Kruskal-Wallis comparisons, ESV absolute error showed the clearest subgroup difference (H = 7.9553, p = 0.0187). However, multiple outcomes were examined and the Poor-quality subgroup contained only seven patients, so this result is not treated as confirmatory evidence."
+    ],
+    "interpretation": "CAMUS image quality is associated descriptively with performance degradation in parts of the frozen pipeline, but its effect is stage-specific rather than uniformly monotonic. Good-quality images generally perform better, while Medium and Poor cases show different error patterns across ED/ES segmentation, quantitative measurements, and classification. Image quality therefore provides useful context for robustness analysis but cannot by itself serve as a complete patient-level reliability indicator.",
+    "application_implication": "Image-quality information may be useful as one component of a future quality-control or review mechanism. The present results do not justify rejecting or accepting an analysis solely from the CAMUS Good/Medium/Poor category.",
+    "limitations": [
+        "Only 50 evaluation patients were analyzed.",
+        "The Poor-quality subgroup contained only seven patients.",
+        "Subgroup analyses were exploratory and multiple outcomes were examined.",
+        "No pairwise post-hoc significance testing was used to select findings.",
+        "CAMUS ImageQuality is existing dataset metadata and is not an independently validated automatic quality score from the current system.",
+        "Associations do not establish causality.",
+        "The evaluation set had historical pilot exposure."
+    ],
+    "pipeline_changes_after_analysis": false
+}

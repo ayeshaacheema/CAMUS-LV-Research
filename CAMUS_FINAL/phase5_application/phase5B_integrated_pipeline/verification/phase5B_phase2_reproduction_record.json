@@ -1,0 +1,27 @@
+{
+  "phase": "Phase 5B \u2014 Integrated Frozen Inference Pipeline",
+  "verification_target": "Frozen Phase 1 segmentation to Phase 2 quantitative analysis",
+  "partition": "50-patient historical evaluation partition",
+  "purpose": "Integration reproduction check only; not model or method selection.",
+  "n_patients": 50,
+  "n_frames": 100,
+  "quantities_verified": [
+    "ED_PRED_area_mm2",
+    "ES_PRED_area_mm2",
+    "ED_PRED_length_mm",
+    "ES_PRED_length_mm",
+    "ED_PRED_volume_ml",
+    "ES_PRED_volume_ml",
+    "PRED_SV_ml",
+    "PRED_EF_pct"
+  ],
+  "numerical_tolerance": {
+    "rtol": 0.0,
+    "atol": 1e-10
+  },
+  "overall_max_absolute_difference": 4.547473508864641e-13,
+  "all_quantities_reproduced": true,
+  "pipeline_changes_made": false,
+  "test_driven_tuning_performed": false,
+  "interpretation": "The integrated implementation reproduces the previously frozen quantitative outputs. The historical evaluation partition was used only to verify software/integration equivalence."
+}

@@ -1,0 +1,4 @@
+confidence_metric,outcome,spearman_rho,p_value
+Model confidence,Absolute end-to-end EF error (pp),0.04,0.7827023178664869
+Confidence margin,Absolute end-to-end EF error (pp),0.0830252100840336,0.5664963036173906
+Normalized entropy,Absolute end-to-end EF error (pp),-0.07534213685474188,0.6030533271347758

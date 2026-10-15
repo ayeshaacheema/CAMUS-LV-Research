@@ -1,0 +1,39 @@
+{
+  "experiment": "Phase 1B-3 \u2014 Controlled Batch Size Experiment",
+  "status": "PROTOCOL FROZEN BEFORE TRAINING",
+  "objective": "Compare batch sizes 2, 4, and 8 while holding resolution, architecture, optimizer, learning rate, loss, augmentation, epoch budget, dataset split, and initialization fixed.",
+  "variable_tested": "batch_size",
+  "batch_sizes": [
+    2,
+    4,
+    8
+  ],
+  "resolution": 256,
+  "learning_rate": 0.0001,
+  "optimizer": "Adam",
+  "architecture": "Baseline U-Net",
+  "parameters": 1940817,
+  "loss": "BCE + Dice",
+  "augmentation": false,
+  "epochs": 30,
+  "threshold": 0.5,
+  "seed": 42,
+  "same_initial_weights": true,
+  "initial_weights_path": "/content/drive/MyDrive/CAMUS_FINAL/phase1_segmentation/phase1B_hyperparameters/configs/batch_size_experiment_initial_weights.weights.h5",
+  "train_patients": 400,
+  "validation_patients": 50,
+  "train_frames_per_epoch": 800,
+  "validation_frames": 100,
+  "total_training_frame_exposures": 24000,
+  "updates_per_epoch": {
+    "2": 400,
+    "4": 200,
+    "8": 100
+  },
+  "comparison_policy": "All configurations are trained for the same 30 epochs and therefore receive the same total training-data exposure. Optimizer update count is allowed to vary naturally with batch size.",
+  "checkpoint_monitor": "val_dice_coefficient",
+  "checkpoint_mode": "max",
+  "early_stopping": false,
+  "learning_rate_scheduler": false,
+  "test_used": false
+}

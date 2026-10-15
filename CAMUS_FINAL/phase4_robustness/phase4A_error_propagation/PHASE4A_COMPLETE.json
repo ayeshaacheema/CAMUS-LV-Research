@@ -1,0 +1,11 @@
+{
+    "phase": "Phase 4A",
+    "title": "End-to-End Error Propagation Analysis",
+    "status": "COMPLETE_AND_FROZEN",
+    "n_patients": 50,
+    "model_training": false,
+    "model_selection": false,
+    "threshold_tuning": false,
+    "post_evaluation_pipeline_modification": false,
+    "next_phase": "Phase 4B \u2014 Confidence and Uncertainty Analysis"
+}

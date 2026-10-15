@@ -1,0 +1,41 @@
+{
+  "analysis_type": "Locked-test qualitative failure analysis",
+  "selection_rule": "Three patients with the largest absolute GT-geometry to predicted-geometry EF error.",
+  "n_cases": 3,
+  "cases": [
+    {
+      "patient_id": "patient0358",
+      "image_quality": "Poor",
+      "reference_EF_pct": 44.0,
+      "GT_geometry_EF_pct": 47.49137979205981,
+      "predicted_EF_pct": 29.435974828677114,
+      "GT_to_PRED_EF_abs_error_pp": 18.055404963382696,
+      "ED_area_relative_error_pct": -11.982419616007409,
+      "ES_area_relative_error_pct": 1.2525389302640377
+    },
+    {
+      "patient_id": "patient0367",
+      "image_quality": "Medium",
+      "reference_EF_pct": 62.0,
+      "GT_geometry_EF_pct": 65.10591701476162,
+      "predicted_EF_pct": 47.68184905915036,
+      "GT_to_PRED_EF_abs_error_pp": 17.424067955611257,
+      "ED_area_relative_error_pct": -7.664041994750649,
+      "ES_area_relative_error_pct": 17.45029977911015
+    },
+    {
+      "patient_id": "patient0391",
+      "image_quality": "Good",
+      "reference_EF_pct": 35.0,
+      "GT_geometry_EF_pct": 39.86842539327857,
+      "predicted_EF_pct": 23.478531104926773,
+      "GT_to_PRED_EF_abs_error_pp": 16.389894288351798,
+      "ED_area_relative_error_pct": 12.489745693191143,
+      "ES_area_relative_error_pct": 23.198259450639107
+    }
+  ],
+  "observed_pattern": "The three largest segmentation-induced EF errors showed asymmetric ED/ES segmentation errors. ED cavity area was underestimated in all three cases, while ES area was either only slightly different or substantially overestimated. This reduced the estimated ED-to-ES volume change and resulted in substantial underestimation of EF.",
+  "image_quality_observation": "The three cases included Good, Medium, and Poor image quality labels. Therefore, large downstream errors were not confined to a single image-quality category.",
+  "interpretation_limit": "These cases were selected because they had the largest errors and are used for qualitative failure analysis. They should not be interpreted as representative of all test patients.",
+  "pipeline_modified_after_analysis": false
+}

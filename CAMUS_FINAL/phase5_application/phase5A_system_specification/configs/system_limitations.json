@@ -1,0 +1,42 @@
+[
+    {
+        "limitation": "A4C-specific scope",
+        "description": "The validated research pipeline focuses on the apical four-chamber view and should not be generalized to other echocardiographic views without additional development and validation."
+    },
+    {
+        "limitation": "ED/ES frames are required",
+        "description": "Automatic cardiac-cycle analysis and automatic ED/ES frame detection were not developed as part of the validated pipeline."
+    },
+    {
+        "limitation": "2D single-plane volume estimation",
+        "description": "EDV and ESV are derived using a 2D single-plane area-length approximation rather than a full clinical biplane or 3D volumetric method."
+    },
+    {
+        "limitation": "Reference-versus-geometry disagreement",
+        "description": "Phase 2 and Phase 4 demonstrated that disagreement can exist between reference EF and EF derived even from GT-mask geometry; therefore downstream EF disagreement cannot always be attributed to segmentation alone."
+    },
+    {
+        "limitation": "Segmentation error propagation",
+        "description": "Errors in LV segmentation and geometric measurements can propagate into volume and EF estimates."
+    },
+    {
+        "limitation": "EF-band boundary sensitivity",
+        "description": "Small continuous EF differences can change the categorical EF-band output when estimates lie near the predefined 40% or 50% boundaries."
+    },
+    {
+        "limitation": "Uncalibrated classifier confidence",
+        "description": "Classifier confidence scores are uncalibrated, and Phase 4B identified confidently incorrect predictions. Confidence therefore cannot serve as a patient-level reliability guarantee."
+    },
+    {
+        "limitation": "Image-quality subgroup evidence",
+        "description": "Image-quality subgroup findings were descriptive, particularly because the Poor-quality subgroup contained only seven evaluation patients."
+    },
+    {
+        "limitation": "Dataset and evaluation scope",
+        "description": "The system was developed and evaluated within the CAMUS-based research workflow. External clinical validation was not performed in the current project."
+    },
+    {
+        "limitation": "Non-diagnostic prototype",
+        "description": "The application is an assistive research prototype and must not be presented as an autonomous diagnostic or treatment-decision system."
+    }
+]

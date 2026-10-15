@@ -1,0 +1,41 @@
+{
+  "experiment": "Phase 1B-3 \u2014 Controlled Batch Size Experiment",
+  "status": "COMPLETED",
+  "selected_batch_size": 2,
+  "batch_sizes_compared": [
+    2,
+    4,
+    8
+  ],
+  "fixed_resolution": 256,
+  "fixed_learning_rate": 0.0001,
+  "fixed_optimizer": "Adam",
+  "fixed_architecture": "Baseline U-Net",
+  "parameter_count": 1940817,
+  "fixed_loss": "BCE + Dice",
+  "augmentation": false,
+  "epochs": 30,
+  "threshold": 0.5,
+  "selection_dataset": "Validation set only",
+  "test_set_used": false,
+  "selected_validation_results": {
+    "overall_dice": 0.9334588076488549,
+    "ED_dice": 0.9434798650740552,
+    "ES_dice": 0.9234377502236546,
+    "overall_iou": 0.8774061057238514,
+    "precision": 0.9348112737594735,
+    "recall": 0.9377803383388877,
+    "normalized_hd95": 0.022576260138292156,
+    "ED_area_MAE_pct": 6.3139609064275195,
+    "ES_area_MAE_pct": 10.31305946181,
+    "overall_area_MAE_pct": 8.313510184118762
+  },
+  "selection_reason": "Batch size 2 was selected because it achieved the strongest overall segmentation performance under the predefined fixed 30-epoch and equal-data-exposure protocol. It obtained the highest overall Dice, ED Dice, ES Dice, and IoU, as well as the lowest normalized HD95 and lowest ED area MAE. Batch size 4 produced marginally lower ES and overall area MAE, but these differences were small, while batch size 2 showed consistently stronger overlap and boundary performance.",
+  "important_interpretation": "The batch-size experiment held epoch count and total training data exposure constant, not optimizer-update count. Batch size 2 therefore received more optimizer updates than batch sizes 4 and 8. The result should be interpreted as batch size 2 performing best under this predefined training protocol, not as evidence that smaller batch size is inherently superior independent of update count.",
+  "optimizer_updates": {
+    "batch_2": 12000,
+    "batch_4": 6000,
+    "batch_8": 3000
+  },
+  "next_experiment": "Phase 1B-4 \u2014 Controlled Augmentation Experiment"
+}

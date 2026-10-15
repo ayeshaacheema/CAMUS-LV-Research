@@ -1,0 +1,76 @@
+
+PHASE 5 — FINAL SYSTEM VERIFICATION REPORT
+=========================================
+
+Project:
+Computer Vision Based Assistive Application
+for Analyzing ECHO Scans — LV (A4C)
+
+Verification date (UTC):
+2026-10-09T05:53:18.829951+00:00
+
+PHASE STATUS
+------------
+Phase 5A: System specification completed
+Phase 5B: Frozen integrated inference completed
+Phase 5C: Gradio assistive application completed
+Phase 5D: Final verification completed
+
+IMPLEMENTED WORKFLOW
+--------------------
+1. Upload paired ED and ES A4C NIfTI images.
+2. Validate image content and returned physical spacing.
+3. Perform frozen LV segmentation.
+4. Generate ED and ES LV contour overlays.
+5. Calculate LV area, length, EDV, ESV, SV and EF.
+6. Perform frozen EF-band classification.
+7. Display uncalibrated class scores.
+8. Present non-diagnostic research disclaimer.
+
+FINAL VERIFICATION RESULTS
+--------------------------
+Initial numerical consistency: PASSED
+Validated application regression: PASSED
+ED/ES overlays: PASSED
+EF-band classification: PASSED
+Missing input handling: PASSED
+Corrupt NIfTI handling: PASSED
+Direct validation tests: PASSED
+Mocked invalid-spacing handler test: PASSED
+
+Numerical measurements verified:
+8
+
+Direct validation cases:
+8
+
+Missing/corrupt input cases:
+4
+
+IMPORTANT LIMITATIONS
+---------------------
+1. The system is a non-diagnostic research prototype.
+
+2. Classification scores are uncalibrated and must
+   not be interpreted as clinical probabilities.
+
+3. The application requires correctly identified
+   paired A4C ED/ES images.
+
+4. Pixel spacing validation operates on values
+   returned by the NIfTI loader. Nibabel may repair
+   zero-valued spacing metadata before validation,
+   so detection of malformed original metadata
+   is not guaranteed.
+
+5. The evaluation uses the previously established
+   CAMUS partition and is not external clinical
+   validation.
+
+6. No frozen segmentation or classification model
+   was retrained during Phase 5.
+
+FINAL STATUS
+------------
+Phase 5 implementation and documented verification
+completed within the defined research prototype scope.
