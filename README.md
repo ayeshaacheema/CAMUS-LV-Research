@@ -7,7 +7,7 @@
 
 **ASCEND EchoLV · Computer Vision · Deep Learning · Medical Image Analysis**
 
-**ASCEND Lab | National University of Sciences and Technology (NUST), Pakistan**
+**ASCEND Tower | IT And Software Development Lab , Pakistan**
 
 *Research Supervisor: Dr. M. Raza Ali*
 
