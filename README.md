@@ -687,6 +687,6 @@ Project-specific materials are not licensed for reuse unless permission is grant
 
 *From Segmentation Accuracy to Reliable Functional Analysis*
 
-**Computer Vision Research · IT And Software Development Lab, ASCEND TOWER **
+**Computer Vision Research · IT And Software Development Lab, ASCEND TOWER**
 
 </div>
